@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Efekan Salman - Computational Neuroscience Explorer Portfolio">
   <meta name="author" content="Efekan Salman">
-  <meta name="keywords" content="computational neuroscience, artificial consciousness, lif neuron, simulation, bio-inspired AI, Efekan Salman">
+  <meta name="keywords"
+    content="computational neuroscience, artificial consciousness, lif neuron, simulation, bio-inspired AI, Efekan Salman">
   <title>Efekan Salman - Computational Neuroscience Explorer</title>
   <link rel="icon" href="https://avatars.githubusercontent.com/u/75560188?v=4" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <nav>
     <div class="logo">Efekan Salman</div>
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       <li>
         <select id="langSelect">
-          <option value="en" selected>English</option>
-          <option value="tr">Türkçe</option>
-          <option value="fr">Français</option>
+          <option value="en" selected>🌐 English</option>
+          <option value="tr">🇹🇷 Türkçe</option>
+          <option value="fr">🇫🇷 Français</option>
         </select>
       </li>
     </ul>
@@ -30,41 +34,52 @@
 
   <header>
     <h1>Computational Neuroscience Explorer</h1>
-    <p>Simulating artificial minds, neural decision systems, and internal states</p>
+    <p class="typing-wrapper">
+      <span id="typing-text"></span><span class="typing-cursor">|</span>
+    </p>
   </header>
 
   <div class="parallax"></div>
 
   <section id="about">
-    <h2 class="section-title">About Me</h2>
-    <p>
-      I’m Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and simulating how artificial agents can learn, decide, and become conscious.
+    <h2 class="section-title" data-i18n="about_title">About Me</h2>
+    <p data-i18n="about_text">
+      I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and
+      simulating how artificial agents can learn, decide, and become conscious.
       <br><br>
-      I hold a 2-year degree in Computer Programming and have since transitioned from backend Java systems to modeling neural mechanisms and motivational engines.
+      I hold a 2-year degree in Computer Programming and have since transitioned from backend Java systems to modeling
+      neural mechanisms and motivational engines.
     </p>
   </section>
 
   <section id="projects">
-    <h2 class="section-title">Highlighted Projects</h2>
+    <h2 class="section-title" data-i18n="projects_title">Highlighted Projects</h2>
+
     <div class="project-card">
       <strong>Artificial Consciousness Engine</strong><br>
-      A modular architecture simulating internal states, motivational systems, and agent decision-making based on artificial drives.
+      A modular architecture simulating internal states, motivational systems, and agent decision-making based on
+      artificial drives.
+      <br>
+      <a class="gh-project-link" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub — NeuroConscious
+      </a>
     </div>
+
     <div class="project-card">
       <strong>Drug Consumption Prediction</strong><br>
-      Machine learning pipeline for predicting drug consumption habits based on demographic and behavioral datasets.   
-     </div>
+      Machine learning pipeline for predicting drug consumption habits based on demographic and behavioral datasets.
+    </div>
 
     <div class="project-card">
       <strong>Crocodylus-Gauge</strong><br>
-      Crocodile weight prediction pipeline using biological scaling laws and regression models. 
-     </div>
+      Crocodile weight prediction pipeline using biological scaling laws and regression models.
+    </div>
 
     <div class="project-card">
       <strong>Snake Game</strong><br>
       Classic Snake game implementation with clean design, modular code, and extendable mechanics.
-    </div> 
-     
+    </div>
 
     <div class="project-card">
       <strong>LIF Neuron Simulator</strong><br>
@@ -72,46 +87,100 @@
     </div>
   </section>
 
+  <!-- GITHUB STATS SECTION -->
+  <section id="github-stats">
+    <h2 class="section-title" data-i18n="github_title">GitHub Stats</h2>
+    <div id="github-stats-container">
+      <div class="gh-loading">
+        <div class="gh-spinner"></div>
+        <p>Loading GitHub stats...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS WITH BARS -->
   <section id="skills">
-    <h2 class="section-title">Skills & Technologies</h2>
-    <ul>
-      <li>Linux</li>
-      <li>Python</li>
-      <li>Matlab</li>
-      <li>Tensorflow</li>
-      <li>PyTorch</li>
-      <li>Pandas</li>
-      <li>OpenCV</li>
-      <li>SeaBorn</li>
-      <li>SciKit Learn</li>
-      <li>Git</li>
-      <li>C</li>
-    </ul>
+    <h2 class="section-title" data-i18n="skills_title">Skills & Technologies</h2>
+    <div class="skill-bars">
+      <div class="skill-item">
+        <span class="skill-name">Python</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+        <span class="skill-pct">90%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">TensorFlow / PyTorch</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div>
+        <span class="skill-pct">80%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">MATLAB</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+        <span class="skill-pct">75%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Scikit-Learn / Pandas</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+        <span class="skill-pct">85%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">OpenCV</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+        <span class="skill-pct">70%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">C / Linux</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="65"></div></div>
+        <span class="skill-pct">65%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">Git</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        <span class="skill-pct">88%</span>
+      </div>
+    </div>
   </section>
 
   <section id="languages">
-    <h2 class="section-title">Languages</h2>
-    <ul>
-      <li>Turkish - Native</li>
-      <li>English - B2</li>
-      <li>French - A2</li>
-      <li>Dutch - A1</li>
-    </ul>
+    <h2 class="section-title" data-i18n="languages_title">Languages</h2>
+    <div class="skill-bars">
+      <div class="skill-item">
+        <span class="skill-name">🇹🇷 Turkish</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100" style="background: linear-gradient(90deg, #e63946, #c1121f);"></div></div>
+        <span class="skill-pct">Native</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">🇬🇧 English</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70" style="background: linear-gradient(90deg, #1d3557, #457b9d);"></div></div>
+        <span class="skill-pct">B2</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">🇫🇷 French</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="35" style="background: linear-gradient(90deg, #2b2d42, #ef233c);"></div></div>
+        <span class="skill-pct">A2</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">🇳🇱 Dutch</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="15" style="background: linear-gradient(90deg, #ae2012, #ca6702);"></div></div>
+        <span class="skill-pct">A1</span>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
-    <h2 class="section-title">Let's Connect</h2>
+    <h2 class="section-title" data-i18n="contact_title">Let's Connect</h2>
     <p>
       💼 <a href="https://www.linkedin.com/in/efekan-salman/" target="_blank">LinkedIn</a> &nbsp; | &nbsp;
       📹 <a href="https://www.youtube.com/@Bulowski" target="_blank">YouTube</a> &nbsp; | &nbsp;
       🧠 <a href="https://medium.com/@efekansalman" target="_blank">Medium Blog</a>
     </p>
-        <a class="btn" href="assets/efekan-cv.pdf" target="_blank">Download CV</a>
+    <a class="btn" href="assets/EfekanSalman_CV.pdf" target="_blank" data-i18n="download_cv">Download CV</a>
   </section>
 
   <footer>
-    &copy; 2025 Efekan Salman • Designed with neural sparks ⚡
+    <span data-i18n="footer">© 2025 Efekan Salman • Designed with neural sparks ⚡</span>
   </footer>
+
   <script src="script.js"></script>
 </body>
+
 </html>
