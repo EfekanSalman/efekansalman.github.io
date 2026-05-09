@@ -15,7 +15,7 @@ const translations = {
     languages_title: "Languages",
     contact_title: "Let's Connect",
     download_cv: "Download CV",
-    footer: "© 2025 Efekan Salman • Designed with neural sparks ⚡",
+    footer: "© 2026 Efekan Salman • Designed with neural sparks ⚡",
     github_title: "GitHub Stats",
   },
   tr: {
@@ -194,20 +194,20 @@ async function loadGithubStats() {
       <div class="gh-languages">
         <p style="margin-bottom:12px; color: var(--title-color); font-weight:600;">Top Languages</p>
         ${sortedLangs
-          .map(
-            ([lang, count]) => `
+        .map(
+          ([lang, count]) => `
           <div class="lang-bar-wrap">
             <span class="lang-name">${lang}</span>
             <div class="lang-bar-bg">
               <div class="lang-bar-fill" style="width:${Math.min(
-                100,
-                (count / repos.length) * 100 * 3
-              )}%"></div>
+            100,
+            (count / repos.length) * 100 * 3
+          )}%"></div>
             </div>
             <span class="lang-count">${count} repos</span>
           </div>`
-          )
-          .join("")}
+        )
+        .join("")}
       </div>
     `;
 
