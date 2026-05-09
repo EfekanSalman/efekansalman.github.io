@@ -353,15 +353,34 @@ section {
   text-align: center;
 }
 
-#contact p a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: 0.3s;
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0 30px;
 }
 
-#contact p a:hover {
+.social-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  padding: 10px 18px;
+  background: var(--glass);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-links a:hover {
   color: var(--highlight);
-  text-shadow: var(--glow);
+  border-color: var(--accent-color);
+  box-shadow: var(--glow);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 #contact .btn {
