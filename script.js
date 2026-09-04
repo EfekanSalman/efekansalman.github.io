@@ -297,6 +297,10 @@ function initScrollAnimations() {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
+  // UPDATE: Initialize interactive synaptic neural network background
+  if (window.SynapticCanvas) {
+    new SynapticCanvas("synapse-canvas");
+  }
   typeText();
   loadGithubStats();
   animateSkillBars();
