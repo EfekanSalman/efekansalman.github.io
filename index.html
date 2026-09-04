@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Efekan Salman - Computational Neuroscience Explorer Portfolio">
+  <meta name="description" content="Efekan Salman - Computational Neuroscience Explorer & Bio-Inspired AI Researcher">
   <meta name="author" content="Efekan Salman">
   <meta name="keywords"
-    content="computational neuroscience, artificial consciousness, lif neuron, simulation, bio-inspired AI, Efekan Salman">
-  <title>Efekan Salman - Computational Neuroscience Explorer</title>
+    content="computational neuroscience, artificial consciousness, lif neuron, spiking neural network, bio-inspired AI, AxonLM, Efekan Salman">
+  <title>Efekan Salman - Computational Neuroscience & Bio-Inspired AI</title>
   <link rel="icon" href="https://avatars.githubusercontent.com/u/75560188?v=4" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap"
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -19,217 +21,446 @@
   <!-- UPDATE: Interactive Synaptic Neural Network Background Canvas -->
   <canvas id="synapse-canvas"></canvas>
 
+  <!-- NAVIGATION -->
   <nav>
-    <div class="logo">Efekan Salman</div>
-    <ul>
+    <div class="logo">
+      <span class="logo-node"></span>
+      <span class="logo-text">Efekan Salman</span>
+    </div>
+    <ul class="nav-links">
       <li><a href="#about" data-i18n="nav_about">About</a></li>
       <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="#research" data-i18n="nav_research">Research</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       <li>
-        <select id="langSelect">
-          <option value="en" selected>🌐 English</option>
-          <option value="tr">🇹🇷 Türkçe</option>
-          <option value="fr">🇫🇷 Français</option>
-        </select>
+        <div class="lang-select-wrapper">
+          <select id="langSelect">
+            <option value="en" selected>🌐 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
       </li>
     </ul>
   </nav>
 
-  <header>
-    <h1>Computational Neuroscience Explorer</h1>
-    <p class="typing-wrapper">
-      <span id="typing-text"></span><span class="typing-cursor">|</span>
-    </p>
+  <!-- HERO SECTION -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        <span data-i18n="hero_badge">Computational Neuroscience & Bio-Inspired AI</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-gradient">Decoding Neural Dynamics</span> & Artificial Minds
+      </h1>
+      <p class="typing-wrapper">
+        <span class="typing-prefix">> </span><span id="typing-text"></span><span class="typing-cursor">_</span>
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary" data-i18n="hero_btn_projects">Explore Projects</a>
+        <a href="assets/EfekanSalman_CV.pdf" target="_blank" class="btn btn-secondary" data-i18n="download_cv">Download CV</a>
+      </div>
+    </div>
+
+    <!-- Interactive Hero Live Neuron / Synapse Oscilloscope -->
+    <div class="hero-widget">
+      <div class="neuron-card">
+        <div class="neuron-card-header">
+          <div class="card-status-dot"></div>
+          <span class="card-status-title" data-i18n="neuron_widget_title">Live LIF Neuron Oscilloscope</span>
+          <span class="badge-tag">V(t) Stream</span>
+        </div>
+        <div class="osc-canvas-wrapper">
+          <canvas id="osc-canvas" width="340" height="110"></canvas>
+        </div>
+        <div class="neuron-telemetry">
+          <div class="telemetry-item">
+            <span class="telemetry-label">Membrane V:</span>
+            <span id="osc-voltage" class="telemetry-val">-70.0 mV</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-label">Spike State:</span>
+            <span id="osc-state" class="telemetry-val state-resting">Resting</span>
+          </div>
+        </div>
+        <button id="stimulate-btn" class="btn-stimulate" data-i18n="stimulate_btn">
+          ⚡ Inject Synaptic Current
+        </button>
+      </div>
+    </div>
   </header>
 
-  <div class="parallax"></div>
-
-  <section id="about">
-    <h2 class="section-title" data-i18n="about_title">About Me</h2>
-    <p data-i18n="about_text">
-      I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and
-      simulating how artificial agents can learn, decide, and become conscious.
-      <br><br>
-      I hold a 2-year degree in Computer Programming and have since transitioned from backend Java systems to modeling
-      neural mechanisms and motivational engines.
-    </p>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="about_tag">01 // Background</span>
+      <h2 class="section-title" data-i18n="about_title">About Me</h2>
+    </div>
+    
+    <div class="about-grid">
+      <div class="about-card primary-card">
+        <p class="about-lead" data-i18n="about_lead">
+          I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and
+          simulating how artificial agents can learn, decide, and exhibit emergent consciousness.
+        </p>
+        <p class="about-sub" data-i18n="about_sub">
+          Transitioning from backend systems to modeling neural mechanisms, I build bio-inspired neural networks,
+          transformer-brain alignment probes, and motivational engines simulating internal cognitive drives.
+        </p>
+      </div>
+      <div class="about-stat-card">
+        <div class="stat-highlight">AUC 0.963</div>
+        <div class="stat-desc" data-i18n="stat_axon_desc">Neuroanatomical decoding accuracy on Allen Brain Atlas (AxonLM)</div>
+      </div>
+      <div class="about-stat-card">
+        <div class="stat-highlight">LIF & SNN</div>
+        <div class="stat-desc" data-i18n="stat_snn_desc">Biophysical Spiking Neural Network & internal drive simulations</div>
+      </div>
+    </div>
   </section>
 
-  <section id="projects">
-    <h2 class="section-title" data-i18n="projects_title">Highlighted Projects</h2>
+  <!-- PROJECTS SECTION (BENTO GRID) -->
+  <section id="projects" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="projects_tag">02 // Systems & Research</span>
+      <h2 class="section-title" data-i18n="projects_title">Highlighted Projects</h2>
+    </div>
 
-    <div class="project-card">
-      <strong>Artificial Consciousness Engine</strong><br>
-      A modular architecture simulating internal states, motivational systems, and agent decision-making based on
-      artificial drives.
-      <br>
-      <a class="gh-project-link" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-        </svg>
-        View on GitHub — NeuroConscious
+    <div class="bento-grid">
+      <!-- Bento Item 1: AxonLM (Featured Large) -->
+      <div class="bento-card bento-card-large">
+        <div class="bento-card-top">
+          <div class="bento-badges">
+            <span class="badge-accent">Featured Research</span>
+            <span class="badge-tag">LLM ✕ Neuroscience</span>
+          </div>
+          <a class="card-icon-link" href="https://github.com/EfekanSalman/AxonLM" target="_blank" title="View Source">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <h3 class="bento-title">AxonLM</h3>
+        <p class="bento-desc" data-i18n="axonlm_desc">
+          Neuroanatomical connectivity is linearly decodable from transformer Feed-Forward Network (FFN) activations. Validated with AUC=0.963 against the Allen Brain Atlas.
+        </p>
+        <div class="bento-footer">
+          <div class="tech-tags">
+            <span>PyTorch</span>
+            <span>Transformers</span>
+            <span>Allen Brain Atlas</span>
+            <span>FFN Probing</span>
+          </div>
+          <a class="gh-link-pill" href="https://github.com/EfekanSalman/AxonLM" target="_blank">
+            <span>View on GitHub</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Bento Item 2: NeuroConscious (Featured Large) -->
+      <div class="bento-card bento-card-large">
+        <div class="bento-card-top">
+          <div class="bento-badges">
+            <span class="badge-accent">Cognitive Architecture</span>
+            <span class="badge-tag">Artificial Consciousness</span>
+          </div>
+          <a class="card-icon-link" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank" title="View Source">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <h3 class="bento-title">NeuroConscious</h3>
+        <p class="bento-desc" data-i18n="neuroconscious_desc">
+          A modular artificial consciousness architecture simulating internal emotional states, motivational drives, and synthetic cognitive agency.
+        </p>
+        <div class="bento-footer">
+          <div class="tech-tags">
+            <span>Cognitive Engines</span>
+            <span>Motivational Drives</span>
+            <span>Agent Simulation</span>
+          </div>
+          <a class="gh-link-pill" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank">
+            <span>View on GitHub</span> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Bento Item 3: ShipOfFools -->
+      <div class="bento-card">
+        <div class="bento-card-top">
+          <div class="bento-badges">
+            <span class="badge-tag">Multi-Agent</span>
+          </div>
+          <a class="card-icon-link" href="https://github.com/EfekanSalman/ShipOfFools" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <h3 class="bento-title">ShipOfFools</h3>
+        <p class="bento-desc" data-i18n="shipoffools_desc">
+          AI-driven social agent-based modeling (ABM) analyzing human psychology, trust networks, and power distribution.
+        </p>
+        <div class="bento-footer">
+          <div class="tech-tags">
+            <span>Agent-Based Modeling</span>
+            <span>Python</span>
+          </div>
+          <a class="gh-link-pill" href="https://github.com/EfekanSalman/ShipOfFools" target="_blank">View →</a>
+        </div>
+      </div>
+
+      <!-- Bento Item 4: LIF Neuron Simulator -->
+      <div class="bento-card">
+        <div class="bento-card-top">
+          <div class="bento-badges">
+            <span class="badge-tag">Biophysics</span>
+          </div>
+        </div>
+        <h3 class="bento-title">LIF Neuron Simulator</h3>
+        <p class="bento-desc" data-i18n="lif_desc">
+          Visual simulation of Leaky Integrate-and-Fire biophysical neuron voltage dynamics, refractory states, and spike trains.
+        </p>
+        <div class="bento-footer">
+          <div class="tech-tags">
+            <span>LIF Dynamics</span>
+            <span>SNN</span>
+            <span>NumPy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Item 5: Drug Consumption Prediction -->
+      <div class="bento-card">
+        <div class="bento-card-top">
+          <div class="bento-badges">
+            <span class="badge-tag">Machine Learning</span>
+          </div>
+        </div>
+        <h3 class="bento-title">Drug Consumption Prediction</h3>
+        <p class="bento-desc" data-i18n="drug_desc">
+          Supervised machine learning pipeline predicting consumption patterns based on demographic and personality traits.
+        </p>
+        <div class="bento-footer">
+          <div class="tech-tags">
+            <span>Scikit-Learn</span>
+            <span>Pandas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH & ACADEMIC IDENTIFIERS SECTION -->
+  <section id="research" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="research_tag">03 // Academic & Open Science</span>
+      <h2 class="section-title" data-i18n="research_title">Research & Identifiers</h2>
+    </div>
+
+    <div class="research-grid">
+      <a href="https://zenodo.org/records/20027966" target="_blank" class="research-card">
+        <div class="research-icon">📘</div>
+        <div class="research-info">
+          <div class="research-label">Zenodo Open Science</div>
+          <div class="research-id">Record #20027966</div>
+          <p class="research-sub">Preprints, datasets, and citable open scientific assets.</p>
+        </div>
+        <span class="ext-arrow">↗</span>
       </a>
-    </div>
 
-    <div class="project-card">
-      <strong>Drug Consumption Prediction</strong><br>
-      Machine learning pipeline for predicting drug consumption habits based on demographic and behavioral datasets.
-    </div>
-
-    <div class="project-card">
-      <strong>AxonLM</strong><br>
-      Neuroanatomical connectivity is linearly decodable from transformer FFN activations. AUC=0.963 on Allen Brain Atlas.
-      <br>
-      <a class="gh-project-link" href="https://github.com/EfekanSalman/AxonLM" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-        </svg>
-        View on GitHub — AxonLM
+      <a href="https://orcid.org/0009-0008-2743-8658" target="_blank" class="research-card">
+        <div class="research-icon">🆔</div>
+        <div class="research-info">
+          <div class="research-label">ORCID Registry</div>
+          <div class="research-id">0009-0008-2743-8658</div>
+          <p class="research-sub">Verified scientific researcher identity & contributions.</p>
+        </div>
+        <span class="ext-arrow">↗</span>
       </a>
-    </div>
 
-    <div class="project-card">
-      <strong>ShipOfFools</strong><br>
-      An AI-powered social simulation using Agent-Based Modeling to explore human psychology and power dynamics.
-      <br>
-      <a class="gh-project-link" href="https://github.com/EfekanSalman/ShipOfFools" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-        </svg>
-        View on GitHub — ShipOfFools
+      <a href="https://huggingface.co/Efekan35" target="_blank" class="research-card">
+        <div class="research-icon">🤗</div>
+        <div class="research-info">
+          <div class="research-label">Hugging Face</div>
+          <div class="research-id">@Efekan35</div>
+          <p class="research-sub">Bio-inspired model weights, datasets, and neural spaces.</p>
+        </div>
+        <span class="ext-arrow">↗</span>
       </a>
-    </div>
 
-    <div class="project-card">
-      <strong>LIF Neuron Simulator</strong><br>
-      Visual model of neuron firing using Python and spiking logic.
+      <a href="https://medium.com/@efekansalman" target="_blank" class="research-card">
+        <div class="research-icon">🧠</div>
+        <div class="research-info">
+          <div class="research-label">Medium Research Blog</div>
+          <div class="research-id">@efekansalman</div>
+          <p class="research-sub">Essays on computational neuroscience and artificial minds.</p>
+        </div>
+        <span class="ext-arrow">↗</span>
+      </a>
     </div>
   </section>
 
   <!-- GITHUB STATS SECTION -->
-  <section id="github-stats">
-    <h2 class="section-title" data-i18n="github_title">GitHub Stats</h2>
+  <section id="github-stats" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="github_tag">04 // Code Telemetry</span>
+      <h2 class="section-title" data-i18n="github_title">GitHub Telemetry</h2>
+    </div>
     <div id="github-stats-container">
       <div class="gh-loading">
         <div class="gh-spinner"></div>
-        <p>Loading GitHub stats...</p>
+        <p>Streaming GitHub repository telemetry...</p>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS WITH BARS -->
-  <section id="skills">
-    <h2 class="section-title" data-i18n="skills_title">Skills & Technologies</h2>
-    <div class="skill-bars">
-      <div class="skill-item">
-        <span class="skill-name">Python</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="90"></div>
+  <!-- SKILLS & TECHNOLOGIES -->
+  <section id="skills" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="skills_tag">05 // Toolchain & Competencies</span>
+      <h2 class="section-title" data-i18n="skills_title">Skills & Technologies</h2>
+    </div>
+
+    <div class="skills-container">
+      <div class="skill-group">
+        <h3 class="skill-group-title" data-i18n="skills_group_neuro">🧠 Neuroscience & AI</h3>
+        <div class="skill-bars">
+          <div class="skill-item">
+            <span class="skill-name">Python / NumPy</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+            <span class="skill-pct">92%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">PyTorch / TensorFlow</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
+            <span class="skill-pct">82%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Scikit-Learn / SciPy</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">MATLAB</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div>
+            <span class="skill-pct">75%</span>
+          </div>
         </div>
-        <span class="skill-pct">90%</span>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">TensorFlow / PyTorch</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="80"></div>
+
+      <div class="skill-group">
+        <h3 class="skill-group-title" data-i18n="skills_group_systems">⚙️ Systems & Engineering</h3>
+        <div class="skill-bars">
+          <div class="skill-item">
+            <span class="skill-name">C / Linux Systems</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+            <span class="skill-pct">70%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">OpenCV</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div>
+            <span class="skill-pct">72%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Git / CI Workflows</span>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
         </div>
-        <span class="skill-pct">80%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">MATLAB</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="75"></div>
-        </div>
-        <span class="skill-pct">75%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">Scikit-Learn / Pandas</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="85"></div>
-        </div>
-        <span class="skill-pct">85%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">OpenCV</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="70"></div>
-        </div>
-        <span class="skill-pct">70%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">C / Linux</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="65"></div>
-        </div>
-        <span class="skill-pct">65%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">Git</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="88"></div>
-        </div>
-        <span class="skill-pct">88%</span>
       </div>
     </div>
   </section>
 
-  <section id="languages">
-    <h2 class="section-title" data-i18n="languages_title">Languages</h2>
-    <div class="skill-bars">
-      <div class="skill-item">
-        <span class="skill-name">🇹🇷 Turkish</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="100" style="background: linear-gradient(90deg, #e63946, #c1121f);">
-          </div>
+  <!-- LANGUAGES SECTION -->
+  <section id="languages" class="bento-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="languages_tag">06 // Human Dialects</span>
+      <h2 class="section-title" data-i18n="languages_title">Languages</h2>
+    </div>
+    <div class="language-cards-grid">
+      <div class="lang-card">
+        <div class="lang-flag">🇹🇷</div>
+        <div class="lang-info">
+          <div class="lang-title">Turkish</div>
+          <div class="lang-level">Native Proficiency</div>
         </div>
-        <span class="skill-pct">Native</span>
+        <span class="lang-pill">Native</span>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">🇬🇧 English</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="70" style="background: linear-gradient(90deg, #1d3557, #457b9d);">
-          </div>
+      <div class="lang-card">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-info">
+          <div class="lang-title">English</div>
+          <div class="lang-level">Professional Working (B2)</div>
         </div>
-        <span class="skill-pct">B2</span>
+        <span class="lang-pill">B2</span>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">🇫🇷 French</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="35" style="background: linear-gradient(90deg, #2b2d42, #ef233c);">
-          </div>
+      <div class="lang-card">
+        <div class="lang-flag">🇫🇷</div>
+        <div class="lang-info">
+          <div class="lang-title">French</div>
+          <div class="lang-level">Elementary (A2)</div>
         </div>
-        <span class="skill-pct">A2</span>
+        <span class="lang-pill">A2</span>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">🇳🇱 Dutch</span>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill" data-width="15" style="background: linear-gradient(90deg, #ae2012, #ca6702);">
-          </div>
+      <div class="lang-card">
+        <div class="lang-flag">🇳🇱</div>
+        <div class="lang-info">
+          <div class="lang-title">Dutch</div>
+          <div class="lang-level">Beginner (A1)</div>
         </div>
-        <span class="skill-pct">A1</span>
+        <span class="lang-pill">A1</span>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="section-title" data-i18n="contact_title">Let's Connect</h2>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/efekan-salman/" target="_blank">💼 LinkedIn</a>
-      <a href="https://github.com/EfekanSalman" target="_blank">💻 GitHub</a>
-      <a href="https://huggingface.co/Efekan35" target="_blank">🤗 Hugging Face</a>
-      <a href="https://medium.com/@efekansalman" target="_blank">🧠 Medium Blog</a>
-      <a href="https://zenodo.org/records/20027966" target="_blank">📘 Zenodo</a>
-      <a href="https://orcid.org/0009-0008-2743-8658" target="_blank">🆔 ORCID</a>
-      <a href="https://www.youtube.com/@Bulowski" target="_blank">📹 YouTube</a>
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="bento-section contact-section">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="contact_tag">07 // Transmission</span>
+      <h2 class="section-title" data-i18n="contact_title">Let's Connect</h2>
     </div>
-    <a class="btn" href="assets/EfekanSalman_CV.pdf" target="_blank" data-i18n="download_cv">Download CV</a>
+    <p class="contact-subtitle" data-i18n="contact_subtitle">
+      Open for collaborations on computational neuroscience, artificial consciousness research, and bio-inspired AI architectures.
+    </p>
+    <div class="social-links-grid">
+      <a href="https://www.linkedin.com/in/efekan-salman/" target="_blank" class="social-btn">
+        <span class="social-icon">💼</span> LinkedIn
+      </a>
+      <a href="https://github.com/EfekanSalman" target="_blank" class="social-btn">
+        <span class="social-icon">💻</span> GitHub
+      </a>
+      <a href="https://huggingface.co/Efekan35" target="_blank" class="social-btn">
+        <span class="social-icon">🤗</span> Hugging Face
+      </a>
+      <a href="https://medium.com/@efekansalman" target="_blank" class="social-btn">
+        <span class="social-icon">🧠</span> Medium
+      </a>
+      <a href="https://zenodo.org/records/20027966" target="_blank" class="social-btn">
+        <span class="social-icon">📘</span> Zenodo
+      </a>
+      <a href="https://orcid.org/0009-0008-2743-8658" target="_blank" class="social-btn">
+        <span class="social-icon">🆔</span> ORCID
+      </a>
+      <a href="https://www.youtube.com/@Bulowski" target="_blank" class="social-btn">
+        <span class="social-icon">📹</span> YouTube
+      </a>
+    </div>
+    <div class="cv-download-wrapper">
+      <a class="btn btn-primary" href="assets/EfekanSalman_CV.pdf" target="_blank" data-i18n="download_cv">Download Curriculum Vitae</a>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <span data-i18n="footer">© 2026 Efekan Salman • Designed with neural sparks ⚡</span>
+    <div class="footer-content">
+      <span data-i18n="footer">© 2026 Efekan Salman • Built with bio-inspired neural sparks ⚡</span>
+      <div class="footer-meta">Computational Neuroscience & Spiking Dynamics</div>
+    </div>
   </footer>
 
   <script src="synapse-canvas.js"></script>

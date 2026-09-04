@@ -1,80 +1,148 @@
+/**
+ * @fileoverview Portfolio Core Script: Multilingual Support, Live LIF Neuron Oscilloscope,
+ * GitHub Telemetry integration, and Interactive Animation Observers.
+ */
+
 // ─── TRANSLATIONS ───────────────────────────────────────────────────────────
 const translations = {
   en: {
     nav_about: "About",
     nav_projects: "Projects",
+    nav_research: "Research",
+    nav_skills: "Skills",
     nav_contact: "Contact",
-    hero_subtitle: "Simulating artificial minds, neural decision systems, and internal states",
-    about_title: "About Me",
-    about_text: `I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and
-      simulating how artificial agents can learn, decide, and become conscious.<br><br>
-      I hold a 2-year degree in Computer Programming and have since transitioned from backend Java systems to modeling
-      neural mechanisms and motivational engines.`,
-    projects_title: "Highlighted Projects",
-    skills_title: "Skills & Technologies",
-    languages_title: "Languages",
-    contact_title: "Let's Connect",
+    hero_badge: "Computational Neuroscience & Bio-Inspired AI",
+    hero_btn_projects: "Explore Projects",
     download_cv: "Download CV",
-    footer: "© 2026 Efekan Salman • Designed with neural sparks ⚡",
-    github_title: "GitHub Stats",
+    neuron_widget_title: "Live LIF Neuron Oscilloscope",
+    stimulate_btn: "⚡ Inject Synaptic Current",
+    about_tag: "01 // Background",
+    about_title: "About Me",
+    about_lead: "I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and simulating how artificial agents can learn, decide, and exhibit emergent consciousness.",
+    about_sub: "Transitioning from backend systems to modeling neural mechanisms, I build bio-inspired neural networks, transformer-brain alignment probes, and motivational engines simulating internal cognitive drives.",
+    stat_axon_desc: "Neuroanatomical decoding accuracy on Allen Brain Atlas (AxonLM)",
+    stat_snn_desc: "Biophysical Spiking Neural Network & internal drive simulations",
+    projects_tag: "02 // Systems & Research",
+    projects_title: "Highlighted Projects",
+    axonlm_desc: "Neuroanatomical connectivity is linearly decodable from transformer Feed-Forward Network (FFN) activations. Validated with AUC=0.963 against the Allen Brain Atlas.",
+    neuroconscious_desc: "A modular artificial consciousness architecture simulating internal emotional states, motivational drives, and synthetic cognitive agency.",
+    shipoffools_desc: "AI-driven social agent-based modeling (ABM) analyzing human psychology, trust networks, and power distribution.",
+    lif_desc: "Visual simulation of Leaky Integrate-and-Fire biophysical neuron voltage dynamics, refractory states, and spike trains.",
+    drug_desc: "Supervised machine learning pipeline predicting consumption patterns based on demographic and personality traits.",
+    research_tag: "03 // Academic & Open Science",
+    research_title: "Research & Identifiers",
+    github_tag: "04 // Code Telemetry",
+    github_title: "GitHub Telemetry",
+    skills_tag: "05 // Toolchain & Competencies",
+    skills_title: "Skills & Technologies",
+    skills_group_neuro: "🧠 Neuroscience & AI",
+    skills_group_systems: "⚙️ Systems & Engineering",
+    languages_tag: "06 // Human Dialects",
+    languages_title: "Languages",
+    contact_tag: "07 // Transmission",
+    contact_title: "Let's Connect",
+    contact_subtitle: "Open for collaborations on computational neuroscience, artificial consciousness research, and bio-inspired AI architectures.",
+    footer: "© 2026 Efekan Salman • Built with bio-inspired neural sparks ⚡"
   },
   tr: {
     nav_about: "Hakkımda",
     nav_projects: "Projeler",
+    nav_research: "Araştırma",
+    nav_skills: "Beceriler",
     nav_contact: "İletişim",
-    hero_subtitle: "Yapay zihinleri, sinirsel karar sistemlerini ve iç durumları simüle ediyorum",
-    about_title: "Hakkımda",
-    about_text: `Hesaplamalı nörobilim alanına derinden dalmış bir geliştiriciyim. Odak noktam; yapay ajanların nasıl öğrenebileceğini,
-      karar verebileceğini ve bilinçli hale gelebileceğini anlamak ve simüle etmektir.<br><br>
-      Bilgisayar Programcılığı alanında 2 yıllık bir dereceye sahibim ve Java backend sistemlerinden sinirsel mekanizmaların
-      ve motivasyon motorlarının modellenmesine geçiş yaptım.`,
-    projects_title: "Öne Çıkan Projeler",
-    skills_title: "Beceriler & Teknolojiler",
-    languages_title: "Diller",
-    contact_title: "Bağlanalım",
+    hero_badge: "Hesaplamalı Nörobilim & Biyo-İlhamlı YZ",
+    hero_btn_projects: "Projeleri Keşfet",
     download_cv: "CV İndir",
-    footer: "© 2025 Efekan Salman • Sinir kıvılcımlarıyla tasarlandı ⚡",
-    github_title: "GitHub İstatistikleri",
+    neuron_widget_title: "Canlı LIF Nöron Osiloskopu",
+    stimulate_btn: "⚡ Sinaptik Akım Enjekte Et",
+    about_tag: "01 // Arka Plan",
+    about_title: "Hakkımda",
+    about_lead: "Hesaplamalı nörobilim alanına derinden odaklanmış bir geliştiriciyim. Temel hedefim; yapay ajanların nasıl öğrenebileceğini, karar verebileceğini ve bilinç dinamiklerini nasıl sergileyebileceğini modellemektir.",
+    about_sub: "Backend sistemlerinden sinirsel mekanizmaların modellenmesine geçiş yaparak biyo-ilhamlı sinir ağları, transformer-beyin hizalama probları ve içsel bilişsel dürtüleri simüle eden motivasyon motorları geliştiriyorum.",
+    stat_axon_desc: "Allen Brain Atlas üzerinde nöroanatomik çözme doğruluğu (AxonLM)",
+    stat_snn_desc: "Biyofiziksel Spiking Sinir Ağı & iç durum simülasyonları",
+    projects_tag: "02 // Sistemler & Araştırma",
+    projects_title: "Öne Çıkan Projeler",
+    axonlm_desc: "Nöroanatomik bağlantısallık, transformer Feed-Forward Network (FFN) aktivasyonlarından doğrusal olarak deşifre edilebilir. Allen Brain Atlas üzerinde AUC=0.963 ile doğrulandı.",
+    neuroconscious_desc: "İçsel duygusal durumları, motivasyonel dürtüleri ve sentetik bilişsel eylemliliği simüle eden modüler bir yapay bilinç mimarisi.",
+    shipoffools_desc: "İnsan psikolojisini, güven ağlarını ve güç dağılımını analiz eden YZ destekli etmen-tabanlı (ABM) sosyal simülasyon.",
+    lif_desc: "Leaky Integrate-and-Fire biyofiziksel nöron voltaj dinamiklerinin, refrakter durumların ve spike dizilerinin görsel simülasyonu.",
+    drug_desc: "Demografik ve kişilik özelliklerine dayalı tüketim kalıplarını tahmin eden denetimli makine öğrenimi boru hattı.",
+    research_tag: "03 // Akademik & Açık Bilim",
+    research_title: "Araştırma & Tanımlayıcılar",
+    github_tag: "04 // Kod Telemetrisi",
+    github_title: "GitHub Telemetrisi",
+    skills_tag: "05 // Araçlar & Yetkinlikler",
+    skills_title: "Beceriler & Teknolojiler",
+    skills_group_neuro: "🧠 Nörobilim & YZ",
+    skills_group_systems: "⚙️ Sistemler & Mühendislik",
+    languages_tag: "06 // Konuşulan Diller",
+    languages_title: "Diller",
+    contact_tag: "07 // İletişim",
+    contact_title: "Bağlantı Kuralım",
+    contact_subtitle: "Hesaplamalı nörobilim, yapay bilinç araştırmaları ve biyo-ilhamlı YZ mimarileri konularında iş birliklerine açığım.",
+    footer: "© 2026 Efekan Salman • Biyo-ilhamlı sinir kıvılcımlarıyla inşa edildi ⚡"
   },
   fr: {
     nav_about: "À propos",
     nav_projects: "Projets",
+    nav_research: "Recherche",
+    nav_skills: "Compétences",
     nav_contact: "Contact",
-    hero_subtitle: "Simulation d'esprits artificiels, de systèmes de décision neuronale et d'états internes",
-    about_title: "À propos de moi",
-    about_text: `Je suis Efekan, un développeur profondément immergé dans les neurosciences computationnelles. Je me concentre sur
-      la compréhension et la simulation de la façon dont les agents artificiels peuvent apprendre, décider et devenir conscients.<br><br>
-      Je suis titulaire d'un diplôme de 2 ans en Programmation Informatique et j'ai depuis migré des systèmes Java backend
-      vers la modélisation des mécanismes neuronaux et des moteurs motivationnels.`,
-    projects_title: "Projets en vedette",
-    skills_title: "Compétences & Technologies",
-    languages_title: "Langues",
-    contact_title: "Connectons-nous",
+    hero_badge: "Neurosciences Computationnelles & IA Bio-Inspirée",
+    hero_btn_projects: "Explorer les Projets",
     download_cv: "Télécharger CV",
-    footer: "© 2025 Efekan Salman • Conçu avec des étincelles neuronales ⚡",
-    github_title: "Statistiques GitHub",
-  },
+    neuron_widget_title: "Oscilloscope Neurone LIF en Direct",
+    stimulate_btn: "⚡ Injecter un Courant Synaptique",
+    about_tag: "01 // Contexte",
+    about_title: "À Propos de Moi",
+    about_lead: "Je suis Efekan, développeur passionné par les neurosciences computationnelles. Mon objectif est de comprendre et de simuler la manière dont les agents artificiels apprennent, décident et développent une conscience.",
+    about_sub: "Passant des systèmes backend à la modélisation des mécanismes neuronaux, je conçois des réseaux neuronaux bio-inspirés, des sondes d'alignement transformeur-cerveau et des moteurs de motivation cognitive.",
+    stat_axon_desc: "Précision de décodage neuroanatomique sur l'Allen Brain Atlas (AxonLM)",
+    stat_snn_desc: "Réseaux neuronaux à impulsions biophysiques (SNN) et simulations d'états internes",
+    projects_tag: "02 // Systèmes & Recherche",
+    projects_title: "Projets en Vedette",
+    axonlm_desc: "La connectivité neuroanatomique est linéairement décodable à partir des activations FFN des transformeurs. Validé avec AUC=0.963 sur Allen Brain Atlas.",
+    neuroconscious_desc: "Une architecture modulaire de conscience artificielle simulant les états émotionnels internes et les pulsions motivationnelles.",
+    shipoffools_desc: "Simulation sociale basée sur des agents (ABM) explorant la psychologie humaine et la dynamique du pouvoir.",
+    lif_desc: "Simulation visuelle de la dynamique de tension d'un neurone LIF, des états réfractaires et des trains d'impulsions.",
+    drug_desc: "Pipeline d'apprentissage automatique supervisé prédisant les habitudes de consommation à partir de traits démographiques.",
+    research_tag: "03 // Académique & Science Ouverte",
+    research_title: "Recherche & Identifiants",
+    github_tag: "04 // Télémétrie du Code",
+    github_title: "Télémétrie GitHub",
+    skills_tag: "05 // Boîte à Outils & Compétences",
+    skills_title: "Compétences & Technologies",
+    skills_group_neuro: "🧠 Neurosciences & IA",
+    skills_group_systems: "⚙️ Systèmes & Ingénierie",
+    languages_tag: "06 // Langues",
+    languages_title: "Langues",
+    contact_tag: "07 // Transmission",
+    contact_title: "Connectons-nous",
+    contact_subtitle: "Ouvert aux collaborations en neurosciences computationnelles, recherche sur la conscience artificielle et architectures d'IA bio-inspirée.",
+    footer: "© 2026 Efekan Salman • Conçu avec des étincelles neuronales bio-inspirées ⚡"
+  }
 };
 
 // ─── TYPING ANIMATION ────────────────────────────────────────────────────────
 const typingPhrases = {
   en: [
-    "Simulating artificial minds...",
-    "Modeling neural decision systems...",
-    "Exploring artificial consciousness...",
-    "Building bio-inspired AI...",
+    "Simulating artificial minds & consciousness...",
+    "Decoding transformer activations with Allen Brain Atlas...",
+    "Modeling biophysical Leaky Integrate-and-Fire neurons...",
+    "Architecting internal drives & synthetic agency...",
   ],
   tr: [
-    "Yapay zihinleri simüle ediyorum...",
-    "Sinirsel karar sistemleri modelliyorum...",
-    "Yapay bilinci keşfediyorum...",
-    "Biyo-ilhamlı yapay zeka inşa ediyorum...",
+    "Yapay zihinleri ve bilinci simüle ediyorum...",
+    "Allen Brain Atlas ile transformer aktivasyonlarını çözümlüyorum...",
+    "Biyofiziksel LIF nöron modelleri geliştiriyorum...",
+    "İçsel dürtüler ve sentetik eylemlilik mimarileri kuruyorum...",
   ],
   fr: [
-    "Simulation d'esprits artificiels...",
-    "Modélisation des systèmes neuronaux...",
-    "Exploration de la conscience artificielle...",
-    "Construction d'IA bio-inspirée...",
+    "Simulation d'esprits artificiels et de conscience...",
+    "Décodage des activations de transformeurs avec l'Allen Brain Atlas...",
+    "Modélisation de neurones LIF biophysiques...",
+    "Conception de pulsions internes et d'agentivité synthétique...",
   ],
 };
 
@@ -85,7 +153,7 @@ let currentLang = "en";
 let typingTimeout;
 
 function typeText() {
-  const phrases = typingPhrases[currentLang];
+  const phrases = typingPhrases[currentLang] || typingPhrases.en;
   const el = document.getElementById("typing-text");
   if (!el) return;
 
@@ -99,15 +167,15 @@ function typeText() {
 
   el.textContent = current.substring(0, charIndex);
 
-  let speed = isDeleting ? 40 : 80;
+  let speed = isDeleting ? 30 : 65;
 
   if (!isDeleting && charIndex === current.length) {
-    speed = 1800;
+    speed = 2000;
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     typingIndex++;
-    speed = 400;
+    speed = 350;
   }
 
   clearTimeout(typingTimeout);
@@ -139,25 +207,180 @@ document.getElementById("langSelect")?.addEventListener("change", (e) => {
   applyTranslations(e.target.value);
 });
 
-// ─── GITHUB STATS ─────────────────────────────────────────────────────────────
+// ─── LIVE LIF NEURON OSCILLOSCOPE SIMULATOR ──────────────────────────────────
+class NeuronOscilloscope {
+  /**
+   * Initializes the real-time LIF Neuron Oscilloscope widget.
+   * Model: Leaky Integrate-and-Fire with refractory membrane dynamics.
+   * 
+   * @param {string} canvasId - DOM Canvas element ID.
+   */
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext("2d");
+
+    // Biophysical LIF parameters (scaled to physiological units)
+    this.vRest = -70.0;    // Resting potential (mV)
+    this.vReset = -75.0;   // Reset potential after spike (mV)
+    this.vThreshold = -50.0; // Firing threshold (mV)
+    this.vPeak = 30.0;     // Peak spike amplitude (mV)
+    this.voltage = this.vRest;
+    this.tau = 20.0;       // Membrane time constant (ms)
+    this.refractory = 0;   // Refractory counter (steps)
+    this.injectedCurrent = 0.0;
+
+    this.history = new Array(80).fill(this.vRest);
+
+    this.voltageEl = document.getElementById("osc-voltage");
+    this.stateEl = document.getElementById("osc-state");
+    this.stimulateBtn = document.getElementById("stimulate-btn");
+
+    this.bindEvents();
+    this.start();
+  }
+
+  /**
+   * Binds stimulation button events.
+   * 
+   * @returns {void}
+   */
+  bindEvents() {
+    this.stimulateBtn?.addEventListener("click", () => {
+      this.injectedCurrent += 18.5; // Inject large current impulse
+    });
+  }
+
+  /**
+   * Advances the biophysical differential equation by 1 step (dt).
+   * Formula: dV/dt = -(V - V_rest)/tau + I_syn / C_m
+   * 
+   * @returns {void}
+   */
+  step() {
+    // Add baseline Poisson micro-noise
+    const noise = (Math.random() - 0.48) * 0.8;
+
+    if (this.refractory > 0) {
+      this.refractory--;
+      this.voltage = this.vReset;
+    } else {
+      // Integrate current and leak towards rest
+      this.voltage += (-(this.voltage - this.vRest) / this.tau) + this.injectedCurrent + noise;
+      this.injectedCurrent *= 0.82; // Rapid current decay
+
+      // Spike detection
+      if (this.voltage >= this.vThreshold) {
+        this.voltage = this.vPeak;
+        this.refractory = 6; // Refractory delay
+      }
+    }
+
+    // Push to waveform history buffer
+    this.history.shift();
+    this.history.push(this.voltage);
+
+    // Update telemetry UI
+    if (this.voltageEl) {
+      this.voltageEl.textContent = `${this.voltage.toFixed(1)} mV`;
+    }
+    if (this.stateEl) {
+      if (this.voltage >= this.vThreshold) {
+        this.stateEl.textContent = "SPIKE!";
+        this.stateEl.className = "telemetry-val state-firing";
+      } else if (this.refractory > 0) {
+        this.stateEl.textContent = "Refractory";
+        this.stateEl.className = "telemetry-val";
+      } else {
+        this.stateEl.textContent = "Integrating";
+        this.stateEl.className = "telemetry-val";
+      }
+    }
+  }
+
+  /**
+   * Renders the waveform on the oscilloscope canvas.
+   * 
+   * @returns {void}
+   */
+  render() {
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    this.ctx.clearRect(0, 0, w, h);
+
+    // Draw grid lines
+    this.ctx.strokeStyle = "rgba(56, 189, 248, 0.08)";
+    this.ctx.lineWidth = 1;
+    for (let y = 20; y < h; y += 25) {
+      this.ctx.beginPath();
+      this.ctx.moveTo(0, y);
+      this.ctx.lineTo(w, y);
+      this.ctx.stroke();
+    }
+
+    // Draw Threshold line
+    const threshY = h - ((this.vThreshold - (-80)) / (40 - (-80))) * h;
+    this.ctx.strokeStyle = "rgba(244, 63, 94, 0.35)";
+    this.ctx.setLineDash([4, 4]);
+    this.ctx.beginPath();
+    this.ctx.moveTo(0, threshY);
+    this.ctx.lineTo(w, threshY);
+    this.ctx.stroke();
+    this.ctx.setLineDash([]);
+
+    // Draw Membrane Voltage Waveform
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = "#22d3ee";
+    this.ctx.lineWidth = 2.2;
+    this.ctx.shadowColor = "#22d3ee";
+    this.ctx.shadowBlur = 8;
+
+    const stepX = w / (this.history.length - 1);
+    for (let i = 0; i < this.history.length; i++) {
+      const v = this.history[i];
+      // Normalize voltage [-80mV to +40mV] to canvas height
+      const y = h - ((v - (-80)) / (40 - (-80))) * (h - 10) - 5;
+      const x = i * stepX;
+
+      if (i === 0) this.ctx.moveTo(x, y);
+      else this.ctx.lineTo(x, y);
+    }
+
+    this.ctx.stroke();
+    this.ctx.shadowBlur = 0; // Reset shadow
+  }
+
+  /**
+   * Main animation loop.
+   * 
+   * @returns {void}
+   */
+  start() {
+    const loop = () => {
+      this.step();
+      this.render();
+      requestAnimationFrame(loop);
+    };
+    loop();
+  }
+}
+
+// ─── GITHUB TELEMETRY ────────────────────────────────────────────────────────
 async function loadGithubStats() {
-  const username = "efekansalman"; // GitHub kullanıcı adı
+  const username = "efekansalman";
   const container = document.getElementById("github-stats-container");
   if (!container) return;
 
   try {
-    // Fetch user info
     const userRes = await fetch(`https://api.github.com/users/${username}`);
     if (!userRes.ok) throw new Error("GitHub API error");
     const user = await userRes.json();
 
-    // Fetch repos
     const repoRes = await fetch(
       `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
     );
     const repos = await repoRes.json();
 
-    // Calculate stats
     const totalStars = repos.reduce((acc, r) => acc + r.stargazers_count, 0);
     const totalForks = repos.reduce((acc, r) => acc + r.forks_count, 0);
     const topLanguages = {};
@@ -192,7 +415,7 @@ async function loadGithubStats() {
         </div>
       </div>
       <div class="gh-languages">
-        <p style="margin-bottom:12px; color: var(--title-color); font-weight:600;">Top Languages</p>
+        <p style="margin-bottom:14px; color: var(--accent-sky); font-weight:600; font-family: var(--font-brand);">Core Language Distribution</p>
         ${sortedLangs
         .map(
           ([lang, count]) => `
@@ -211,51 +434,15 @@ async function loadGithubStats() {
       </div>
     `;
 
-    // Animate bars
     setTimeout(() => {
       document.querySelectorAll(".lang-bar-fill").forEach((bar) => {
         bar.style.transition = "width 1.2s cubic-bezier(.4,0,.2,1)";
       });
     }, 100);
-
-    // Update project cards with GitHub links
-    linkProjectsToGitHub(repos);
   } catch (err) {
-    container.innerHTML = `<p style="color:#64748b; text-align:center;">GitHub istatistikleri yüklenemedi. Lütfen daha sonra tekrar deneyin.</p>`;
+    container.innerHTML = `<p style="color:#64748b; text-align:center;">Telemetry stream unavailable. Reconnecting...</p>`;
     console.error(err);
   }
-}
-
-// ─── LINK PROJECTS TO GITHUB ─────────────────────────────────────────────────
-function linkProjectsToGitHub(repos) {
-  const projectMap = {
-    "Drug Consumption Prediction": "drug-consumption",
-    "Crocodylus-Gauge": "crocodylus",
-    "Snake Game": "snake",
-    "LIF Neuron Simulator": "lif",
-  };
-
-  document.querySelectorAll(".project-card").forEach((card) => {
-    const titleEl = card.querySelector("strong");
-    if (!titleEl) return;
-    const title = titleEl.textContent.trim();
-    const keyword = projectMap[title] || title.toLowerCase().replace(/\s+/g, "-");
-
-    const match = repos.find(
-      (r) =>
-        r.name.toLowerCase().includes(keyword.split("-")[0]) ||
-        r.name.toLowerCase().includes(keyword)
-    );
-
-    if (match) {
-      const link = document.createElement("a");
-      link.href = match.html_url;
-      link.target = "_blank";
-      link.className = "gh-project-link";
-      link.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub`;
-      card.appendChild(link);
-    }
-  });
 }
 
 // ─── SKILL BARS ANIMATION ────────────────────────────────────────────────────
@@ -272,38 +459,23 @@ function animateSkillBars() {
         }
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.2 }
   );
   bars.forEach((bar) => observer.observe(bar));
 }
 
-// ─── SCROLL FADE-IN ───────────────────────────────────────────────────────────
-function initScrollAnimations() {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll("section, .project-card").forEach((el) => {
-    el.classList.add("fade-in-section");
-    observer.observe(el);
-  });
-}
-
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  // UPDATE: Initialize interactive synaptic neural network background
+  // UPDATE: Initialize interactive synaptic neural network canvas
   if (window.SynapticCanvas) {
     new SynapticCanvas("synapse-canvas");
   }
+
+  // UPDATE: Initialize real-time LIF Neuron Oscilloscope widget
+  new NeuronOscilloscope("osc-canvas");
+
   typeText();
   loadGithubStats();
   animateSkillBars();
-  initScrollAnimations();
   applyTranslations("en");
 });
