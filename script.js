@@ -16,34 +16,35 @@ const translations = {
     download_cv: "Download CV",
     brain_3d_title: "3D Holographic Connectome",
     neuron_widget_title: "Live LIF Neuron Oscilloscope",
-    stimulate_btn: "⚡ Inject Synaptic Current",
+    stimulate_btn: "Inject Synaptic Current",
     about_tag: "01 // Background",
     about_title: "About Me",
-    about_lead: "I'm Efekan, a developer deeply immersed in computational neuroscience. My focus lies in understanding and simulating how artificial agents can learn, decide, and exhibit emergent consciousness.",
-    about_sub: "Transitioning from backend systems to modeling neural mechanisms, I build bio-inspired neural networks, transformer-brain alignment probes, and motivational engines simulating internal cognitive drives.",
+    about_lead: "I'm Efekan, a developer and computational neuroscience explorer focused on simulating artificial consciousness, neural decision-making, and biologically inspired systems through code.",
+    about_sub: "Transitioning from backend systems to modeling neural mechanisms, I build biophysical spiking neural networks, transformer-brain alignment probes, and cognitive architectures simulating internal motivational drives.",
     stat_axon_desc: "Neuroanatomical decoding accuracy on Allen Brain Atlas (AxonLM)",
-    stat_snn_desc: "Biophysical Spiking Neural Network & internal drive simulations",
+    stat_snn_desc: "Biophysical Spiking Neural Network & STDP synaptic plasticity",
     projects_tag: "02 // Systems & Research",
     projects_title: "Highlighted Projects",
     axonlm_desc: "Neuroanatomical connectivity is linearly decodable from transformer Feed-Forward Network (FFN) activations. Validated with AUC=0.963 against the Allen Brain Atlas.",
-    neuroconscious_desc: "A modular artificial consciousness architecture simulating internal emotional states, motivational drives, and synthetic cognitive agency.",
-    shipoffools_desc: "AI-driven social agent-based modeling (ABM) analyzing human psychology, trust networks, and power distribution.",
-    lif_desc: "Visual simulation of Leaky Integrate-and-Fire biophysical neuron voltage dynamics, refractory states, and spike trains.",
-    drug_desc: "Supervised machine learning pipeline predicting consumption patterns based on demographic and personality traits.",
+    neuroconscious_desc: "A biologically inspired, modular artificial consciousness engine. Simulates autonomous agents with internal emotional states, episodic/semantic/procedural memory, goal hierarchies, and DQN learning systems.",
+    snn_stdp_desc: "Biologically plausible SNN simulator featuring LIF neurons, STDP unsupervised synaptic plasticity, Winner-Take-All lateral inhibition, and interactive Streamlit UI.",
+    shipoffools_desc: "AI-driven social agent-based modeling (ABM) exploring human psychology, power dynamics, trust network formation, and dynamic anomaly detection.",
+    braindecode_desc: "Decoding brain connectivity, cognitive confusion states, and EEG neural time-series data using Brian2 and signal processing pipelines.",
+    drug_desc: "End-to-end production ML pipeline & Dockerized FastAPI service engineered with strict pre-commit validation, Pydantic data contracts, and predictive modeling.",
     research_tag: "03 // Academic & Open Science",
     research_title: "Research & Identifiers",
     github_tag: "04 // Code Telemetry",
     github_title: "GitHub Telemetry",
     skills_tag: "05 // Toolchain & Competencies",
     skills_title: "Skills & Technologies",
-    skills_group_neuro: "🧠 Neuroscience & AI",
-    skills_group_systems: "⚙️ Systems & Engineering",
+    skills_group_neuro: "Neuroscience & AI",
+    skills_group_systems: "Systems & Engineering",
     languages_tag: "06 // Human Dialects",
     languages_title: "Languages",
     contact_tag: "07 // Transmission",
     contact_title: "Let's Connect",
     contact_subtitle: "Open for collaborations on computational neuroscience, artificial consciousness research, and bio-inspired AI architectures.",
-    footer: "© 2026 Efekan Salman • Built with bio-inspired neural sparks ⚡"
+    footer: "© 2026 Efekan Salman • Built with bio-inspired neural sparks"
   },
   tr: {
     nav_about: "Hakkımda",
@@ -56,34 +57,35 @@ const translations = {
     download_cv: "CV İndir",
     brain_3d_title: "3B Holografik Konnektom",
     neuron_widget_title: "Canlı LIF Nöron Osiloskopu",
-    stimulate_btn: "⚡ Sinaptik Akım Enjekte Et",
+    stimulate_btn: "Sinaptik Akım Enjekte Et",
     about_tag: "01 // Arka Plan",
     about_title: "Hakkımda",
-    about_lead: "Hesaplamalı nörobilim alanına derinden odaklanmış bir geliştiriciyim. Temel hedefim; yapay ajanların nasıl öğrenebileceğini, karar verebileceğini ve bilinç dinamiklerini nasıl sergileyebileceğini modellemektir.",
-    about_sub: "Backend sistemlerinden sinirsel mekanizmaların modellenmesine geçiş yaparak biyo-ilhamlı sinir ağları, transformer-beyin hizalama probları ve içsel bilişsel dürtüleri simüle eden motivasyon motorları geliştiriyorum.",
+    about_lead: "Hesaplamalı nörobilim alanına odaklanmış bir geliştiriciyim. Yapay bilinç, sinirsel karar mekanizmaları ve biyolojik olarak ilham alan sistemleri kod aracılığıyla simüle ediyorum.",
+    about_sub: "Backend sistemlerinden sinirsel mekanizmaların modellenmesine geçiş yaparak biyofiziksel spiking sinir ağları, transformer-beyin hizalama probları ve içsel bilişsel dürtüleri simüle eden mimariler kuruyorum.",
     stat_axon_desc: "Allen Brain Atlas üzerinde nöroanatomik çözme doğruluğu (AxonLM)",
-    stat_snn_desc: "Biyofiziksel Spiking Sinir Ağı & iç durum simülasyonları",
+    stat_snn_desc: "Biyofiziksel Spiking Sinir Ağı & STDP sinaptik plastisite",
     projects_tag: "02 // Sistemler & Araştırma",
     projects_title: "Öne Çıkan Projeler",
     axonlm_desc: "Nöroanatomik bağlantısallık, transformer Feed-Forward Network (FFN) aktivasyonlarından doğrusal olarak deşifre edilebilir. Allen Brain Atlas üzerinde AUC=0.963 ile doğrulandı.",
-    neuroconscious_desc: "İçsel duygusal durumları, motivasyonel dürtüleri ve sentetik bilişsel eylemliliği simüle eden modüler bir yapay bilinç mimarisi.",
-    shipoffools_desc: "İnsan psikolojisini, güven ağlarını ve güç dağılımını analiz eden YZ destekli etmen-tabanlı (ABM) sosyal simülasyon.",
-    lif_desc: "Leaky Integrate-and-Fire biyofiziksel nöron voltaj dinamiklerinin, refrakter durumların ve spike dizilerinin görsel simülasyonu.",
-    drug_desc: "Demografik ve kişilik özelliklerine dayalı tüketim kalıplarını tahmin eden denetimli makine öğrenimi boru hattı.",
+    neuroconscious_desc: "İçsel duygusal durumları, epizodik/semantik/prosedürel bellek hiyerarşilerini ve DQN öğrenme sistemlerini simüle eden modüler yapay bilinç mimarisi.",
+    snn_stdp_desc: "LIF nöronları, STDP denetimsiz sinaptik plastisite, Winner-Take-All lateral inhibisyon ve interaktif Streamlit arayüzü içeren biyolojik gerçekçi SNN simülatörü.",
+    shipoffools_desc: "İnsan psikolojisini, güç dinamiklerini, güven ağlarını ve dinamik anomali tespitini modelleyen YZ destekli etmen-tabanlı (ABM) sosyal simülasyon.",
+    braindecode_desc: "Brian2 ve sinyal işleme boru hatları kullanarak beyin konnektivitesi, zihinsel karmaşıklık durumları ve EEG zaman serilerinin deşifre edilmesi.",
+    drug_desc: "Katı pre-commit doğrulaması, Pydantic veri sözleşmeleri ve tahmin modelleri içeren uçtan uca prodüksiyon ML mimarisi ve Dockerized FastAPI servisi.",
     research_tag: "03 // Akademik & Açık Bilim",
     research_title: "Araştırma & Tanımlayıcılar",
     github_tag: "04 // Kod Telemetrisi",
     github_title: "GitHub Telemetrisi",
     skills_tag: "05 // Araçlar & Yetkinlikler",
     skills_title: "Beceriler & Teknolojiler",
-    skills_group_neuro: "🧠 Nörobilim & YZ",
-    skills_group_systems: "⚙️ Sistemler & Mühendislik",
+    skills_group_neuro: "Nörobilim & YZ",
+    skills_group_systems: "Sistemler & Mühendislik",
     languages_tag: "06 // Konuşulan Diller",
     languages_title: "Diller",
     contact_tag: "07 // İletişim",
     contact_title: "Bağlantı Kuralım",
     contact_subtitle: "Hesaplamalı nörobilim, yapay bilinç araştırmaları ve biyo-ilhamlı YZ mimarileri konularında iş birliklerine açığım.",
-    footer: "© 2026 Efekan Salman • Biyo-ilhamlı sinir kıvılcımlarıyla inşa edildi ⚡"
+    footer: "© 2026 Efekan Salman • Biyo-ilhamlı sinir kıvılcımlarıyla inşa edildi"
   },
   fr: {
     nav_about: "À propos",
@@ -96,34 +98,35 @@ const translations = {
     download_cv: "Télécharger CV",
     brain_3d_title: "Connectome Holographique 3D",
     neuron_widget_title: "Oscilloscope Neurone LIF en Direct",
-    stimulate_btn: "⚡ Injecter un Courant Synaptique",
+    stimulate_btn: "Injecter un Courant Synaptique",
     about_tag: "01 // Contexte",
     about_title: "À Propos de Moi",
-    about_lead: "Je suis Efekan, développeur passionné par les neurosciences computationnelles. Mon objectif est de comprendre et de simuler la manière dont les agents artificiels apprennent, décident et développent une conscience.",
-    about_sub: "Passant des systèmes backend à la modélisation des mécanismes neuronaux, je conçois des réseaux neuronaux bio-inspirés, des sondes d'alignement transformeur-cerveau et des moteurs de motivation cognitive.",
+    about_lead: "Je suis Efekan, explorateur en neurosciences computationnelles axé sur la simulation de la conscience artificielle, de la prise de décision neuronale et des systèmes bio-inspirés.",
+    about_sub: "Passant des systèmes backend à la modélisation neuronale, je conçois des réseaux à impulsions (SNN), des sondes d'alignement transformeur-cerveau et des architectures cognitives.",
     stat_axon_desc: "Précision de décodage neuroanatomique sur l'Allen Brain Atlas (AxonLM)",
-    stat_snn_desc: "Réseaux neuronaux à impulsions biophysiques (SNN) et simulations d'états internes",
+    stat_snn_desc: "Réseaux neuronaux à impulsions (SNN) et plasticité synaptique STDP",
     projects_tag: "02 // Systèmes & Recherche",
     projects_title: "Projets en Vedette",
     axonlm_desc: "La connectivité neuroanatomique est linéairement décodable à partir des activations FFN des transformeurs. Validé avec AUC=0.963 sur Allen Brain Atlas.",
-    neuroconscious_desc: "Une architecture modulaire de conscience artificielle simulant les états émotionnels internes et les pulsions motivationnelles.",
-    shipoffools_desc: "Simulation sociale basée sur des agents (ABM) explorant la psychologie humaine et la dynamique du pouvoir.",
-    lif_desc: "Simulation visuelle de la dynamique de tension d'un neurone LIF, des états réfractaires et des trains d'impulsions.",
-    drug_desc: "Pipeline d'apprentissage automatique supervisé prédisant les habitudes de consommation à partir de traits démographiques.",
+    neuroconscious_desc: "Moteur modulaire de conscience artificielle simulant des agents autonomes dotés d'états émotionnels internes, de hiérarchies de mémoire et d'apprentissage DQN.",
+    snn_stdp_desc: "Simulateur SNN biologiquement plausible intégrant des neurones LIF, plasticité STDP, inhibition latérale WTA et tableau de bord Streamlit.",
+    shipoffools_desc: "Simulation sociale multi-agents (ABM) explorant la psychologie humaine, la dynamique du pouvoir, les réseaux de confiance et la détection d'anomalies.",
+    braindecode_desc: "Décodage de la connectivité cérébrale, des états cognitifs et des signaux EEG via Brian2 et pipelines de traitement du signal.",
+    drug_desc: "Système de production ML de bout en bout et microservice FastAPI conteneurisé (Docker) avec validation stricte des données et modélisation prédictive.",
     research_tag: "03 // Académique & Science Ouverte",
     research_title: "Recherche & Identifiants",
     github_tag: "04 // Télémétrie du Code",
     github_title: "Télémétrie GitHub",
     skills_tag: "05 // Boîte à Outils & Compétences",
     skills_title: "Compétences & Technologies",
-    skills_group_neuro: "🧠 Neurosciences & IA",
-    skills_group_systems: "⚙️ Systèmes & Ingénierie",
+    skills_group_neuro: "Neurosciences & IA",
+    skills_group_systems: "Systèmes & Ingénierie",
     languages_tag: "06 // Langues",
     languages_title: "Langues",
     contact_tag: "07 // Transmission",
     contact_title: "Connectons-nous",
     contact_subtitle: "Ouvert aux collaborations en neurosciences computationnelles, recherche sur la conscience artificielle et architectures d'IA bio-inspirée.",
-    footer: "© 2026 Efekan Salman • Conçu avec des étincelles neuronales bio-inspirées ⚡"
+    footer: "© 2026 Efekan Salman • Conçu avec des étincelles neuronales bio-inspirées"
   }
 };
 
@@ -506,22 +509,30 @@ async function loadGithubStats() {
     container.innerHTML = `
       <div class="gh-stats-grid">
         <div class="gh-stat-card">
-          <span class="gh-stat-icon">📦</span>
+          <span class="gh-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </span>
           <span class="gh-stat-value">${user.public_repos}</span>
           <span class="gh-stat-label">Repositories</span>
         </div>
         <div class="gh-stat-card">
-          <span class="gh-stat-icon">⭐</span>
+          <span class="gh-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </span>
           <span class="gh-stat-value">${totalStars}</span>
           <span class="gh-stat-label">Total Stars</span>
         </div>
         <div class="gh-stat-card">
-          <span class="gh-stat-icon">🍴</span>
+          <span class="gh-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+          </span>
           <span class="gh-stat-value">${totalForks}</span>
           <span class="gh-stat-label">Total Forks</span>
         </div>
         <div class="gh-stat-card">
-          <span class="gh-stat-icon">👥</span>
+          <span class="gh-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </span>
           <span class="gh-stat-value">${user.followers}</span>
           <span class="gh-stat-label">Followers</span>
         </div>
