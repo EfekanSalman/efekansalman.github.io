@@ -364,18 +364,20 @@ nav .logo {
 
 .neuron-card {
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: 22px;
+  padding: 24px;
   box-shadow: var(--glow-card);
-  transition: border-color 0.3s ease;
+  transition: all 0.35s ease;
+  position: relative;
 }
 
 .neuron-card:hover {
   border-color: var(--border-active);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.8), var(--glow-cyan);
 }
 
 .neuron-card-header {
@@ -394,14 +396,63 @@ nav .logo {
 }
 
 .card-status-title {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-secondary);
 }
 
+/* 3D Brain Three.js Container */
+.brain-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.45) 0%, rgba(3, 7, 18, 0.85) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  cursor: grab;
+}
+
+.brain-3d-wrapper:active {
+  cursor: grabbing;
+}
+
+#brain-3d-container {
+  width: 100%;
+  height: 100%;
+}
+
+#brain-3d-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.brain-overlay-hints {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hint-tag {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  background: rgba(3, 7, 18, 0.65);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
 .osc-canvas-wrapper {
   background: rgba(3, 7, 18, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 14px;
@@ -410,7 +461,7 @@ nav .logo {
 #osc-canvas {
   display: block;
   width: 100%;
-  height: 100px;
+  height: 80px;
 }
 
 .neuron-telemetry {

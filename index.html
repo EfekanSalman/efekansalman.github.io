@@ -76,17 +76,28 @@
       </div>
     </div>
 
-    <!-- Interactive Hero Live Neuron / Synapse Oscilloscope -->
+    <!-- Interactive Hero Live 3D Brain & LIF Oscilloscope HUD -->
     <div class="hero-widget">
       <div class="neuron-card">
         <div class="neuron-card-header">
           <div class="card-status-dot"></div>
-          <span class="card-status-title" data-i18n="neuron_widget_title">Live LIF Neuron Oscilloscope</span>
-          <span class="badge-tag">V(t) Stream</span>
+          <span class="card-status-title" data-i18n="brain_3d_title">3D Holographic Connectome</span>
+          <span class="badge-tag">360° Interactive</span>
         </div>
+
+        <!-- 3D Three.js Brain Container -->
+        <div class="brain-3d-wrapper">
+          <div id="brain-3d-container"></div>
+          <div class="brain-overlay-hints">
+            <span class="hint-tag">↻ Drag to Rotate</span>
+            <span class="hint-tag">⚡ Spiking Tracts</span>
+          </div>
+        </div>
+
         <div class="osc-canvas-wrapper">
-          <canvas id="osc-canvas" width="340" height="110"></canvas>
+          <canvas id="osc-canvas" width="340" height="90"></canvas>
         </div>
+        
         <div class="neuron-telemetry">
           <div class="telemetry-item">
             <span class="telemetry-label">Membrane V:</span>
@@ -474,6 +485,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="brain-3d.js"></script>
   <script src="synapse-canvas.js"></script>
   <script src="script.js"></script>
 </body>

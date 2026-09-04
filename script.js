@@ -1,6 +1,6 @@
 /**
- * @fileoverview Portfolio Core Script: Dynamic Color Theme Engine, Multilingual Support,
- * Live LIF Neuron Oscilloscope, GitHub Telemetry integration, and Interactive Observers.
+ * @fileoverview Portfolio Core Script: Dynamic Color Theme Engine, 3D Holographic Brain,
+ * Multilingual Support, Live LIF Neuron Oscilloscope, and GitHub Telemetry integration.
  */
 
 // ─── TRANSLATIONS ───────────────────────────────────────────────────────────
@@ -14,6 +14,7 @@ const translations = {
     hero_badge: "Computational Neuroscience & Bio-Inspired AI",
     hero_btn_projects: "Explore Projects",
     download_cv: "Download CV",
+    brain_3d_title: "3D Holographic Connectome",
     neuron_widget_title: "Live LIF Neuron Oscilloscope",
     stimulate_btn: "⚡ Inject Synaptic Current",
     about_tag: "01 // Background",
@@ -53,6 +54,7 @@ const translations = {
     hero_badge: "Hesaplamalı Nörobilim & Biyo-İlhamlı YZ",
     hero_btn_projects: "Projeleri Keşfet",
     download_cv: "CV İndir",
+    brain_3d_title: "3B Holografik Konnektom",
     neuron_widget_title: "Canlı LIF Nöron Osiloskopu",
     stimulate_btn: "⚡ Sinaptik Akım Enjekte Et",
     about_tag: "01 // Arka Plan",
@@ -92,6 +94,7 @@ const translations = {
     hero_badge: "Neurosciences Computationnelles & IA Bio-Inspirée",
     hero_btn_projects: "Explorer les Projets",
     download_cv: "Télécharger CV",
+    brain_3d_title: "Connectome Holographique 3D",
     neuron_widget_title: "Oscilloscope Neurone LIF en Direct",
     stimulate_btn: "⚡ Injecter un Courant Synaptique",
     about_tag: "01 // Contexte",
@@ -131,38 +134,54 @@ const themePalettes = {
     spikeColor: "rgba(16, 185, 129, ",
     synapseColor: "rgba(52, 211, 153, ",
     oscColor: "#10b981",
+    brainPoint: 0x34d399,
+    brainTract: 0x059669,
+    brainSpark: 0x6ee7b7,
   },
   cyan: {
     neuronColor: "rgba(56, 189, 248, ",
     spikeColor: "rgba(34, 211, 238, ",
     synapseColor: "rgba(125, 211, 252, ",
     oscColor: "#22d3ee",
+    brainPoint: 0x38bdf8,
+    brainTract: 0x0284c7,
+    brainSpark: 0x22d3ee,
   },
   violet: {
     neuronColor: "rgba(192, 132, 252, ",
     spikeColor: "rgba(245, 158, 11, ",
     synapseColor: "rgba(168, 85, 247, ",
     oscColor: "#c084fc",
+    brainPoint: 0xc084fc,
+    brainTract: 0x7c3aed,
+    brainSpark: 0xf59e0b,
   },
   indigo: {
     neuronColor: "rgba(129, 140, 248, ",
     spikeColor: "rgba(165, 180, 252, ",
     synapseColor: "rgba(99, 102, 241, ",
     oscColor: "#818cf8",
+    brainPoint: 0x818cf8,
+    brainTract: 0x4f46e5,
+    brainSpark: 0xa5b4fc,
   },
   crimson: {
     neuronColor: "rgba(244, 63, 94, ",
     spikeColor: "rgba(251, 113, 133, ",
     synapseColor: "rgba(225, 29, 72, ",
     oscColor: "#f43f5e",
+    brainPoint: 0xf43f5e,
+    brainTract: 0xbe123c,
+    brainSpark: 0xfb7185,
   },
 };
 
 let activeSynapticCanvas = null;
 let activeOscilloscope = null;
+let activeBrain3D = null;
 
 /**
- * Applies a theme across CSS root, Canvas background, and Oscilloscope.
+ * Applies a theme across CSS root, Canvas background, 3D Brain, and Oscilloscope.
  * 
  * @param {string} theme - Theme identifier ('emerald', 'cyan', 'violet', 'indigo', 'crimson').
  * @returns {void}
@@ -183,6 +202,14 @@ function applyTheme(theme) {
 
   if (activeOscilloscope) {
     activeOscilloscope.setWaveformColor(palette.oscColor);
+  }
+
+  if (activeBrain3D) {
+    activeBrain3D.updateColors({
+      pointColor: palette.brainPoint,
+      tractColor: palette.brainTract,
+      sparkColor: palette.brainSpark,
+    });
   }
 
   const select = document.getElementById("themeSelect");
@@ -322,13 +349,18 @@ class NeuronOscilloscope {
   }
 
   /**
-   * Binds stimulation button events.
+   * Binds stimulation button events and triggers 3D Brain spike cascade.
    * 
    * @returns {void}
    */
   bindEvents() {
     this.stimulateBtn?.addEventListener("click", () => {
       this.injectedCurrent += 18.5; // Inject large current impulse
+
+      // Synchronize with 3D Holographic Brain spike cascade
+      if (activeBrain3D) {
+        activeBrain3D.triggerSpikeCascade();
+      }
     });
   }
 
@@ -392,7 +424,7 @@ class NeuronOscilloscope {
     // Draw grid lines
     this.ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
     this.ctx.lineWidth = 1;
-    for (let y = 20; y < h; y += 25) {
+    for (let y = 15; y < h; y += 20) {
       this.ctx.beginPath();
       this.ctx.moveTo(0, y);
       this.ctx.lineTo(w, y);
@@ -419,7 +451,6 @@ class NeuronOscilloscope {
     const stepX = w / (this.history.length - 1);
     for (let i = 0; i < this.history.length; i++) {
       const v = this.history[i];
-      // Normalize voltage [-80mV to +40mV] to canvas height
       const y = h - ((v - (-80)) / (40 - (-80))) * (h - 10) - 5;
       const x = i * stepX;
 
@@ -548,10 +579,10 @@ function animateSkillBars() {
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   const initialTheme = localStorage.getItem("neuro_theme") || "emerald";
+  const palette = themePalettes[initialTheme] || themePalettes.emerald;
 
-  // UPDATE: Initialize interactive synaptic canvas with initial theme palette
+  // 1. Initialize interactive synaptic background canvas
   if (window.SynapticCanvas) {
-    const palette = themePalettes[initialTheme] || themePalettes.emerald;
     activeSynapticCanvas = new SynapticCanvas("synapse-canvas", {
       neuronColor: palette.neuronColor,
       spikeColor: palette.spikeColor,
@@ -559,7 +590,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // UPDATE: Initialize real-time LIF Neuron Oscilloscope widget
+  // 2. Initialize 3D Holographic Brain Connectome
+  if (window.HolographicBrain3D) {
+    activeBrain3D = new HolographicBrain3D("brain-3d-container", {
+      pointColor: palette.brainPoint,
+      tractColor: palette.brainTract,
+      sparkColor: palette.brainSpark,
+    });
+  }
+
+  // 3. Initialize real-time LIF Neuron Oscilloscope widget
   activeOscilloscope = new NeuronOscilloscope("osc-canvas");
 
   // Apply saved or default theme
