@@ -3,32 +3,109 @@
    Computational Neuroscience & Bio-Inspired AI Design System
    ========================================================================== */
 
-:root {
-  --bg-deep: #030712;
-  --bg-card: rgba(15, 23, 42, 0.70);
-  --bg-card-hover: rgba(30, 41, 59, 0.85);
+:root, [data-theme="emerald"] {
+  --bg-deep: #010a08;
+  --bg-radial: radial-gradient(circle at 50% 10%, #064e3b 0%, #022c22 45%, #010a08 100%);
+  --bg-card: rgba(4, 24, 18, 0.72);
+  --bg-card-hover: rgba(6, 40, 30, 0.88);
   --bg-glass: rgba(255, 255, 255, 0.03);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #f0fdf4;
+  --text-secondary: #a7f3d0;
+  --text-muted: #6ee7b7;
   
-  --accent-cyan: #22d3ee;
-  --accent-sky: #38bdf8;
-  --accent-indigo: #818cf8;
-  --accent-purple: #c084fc;
-  --accent-emerald: #34d399;
+  --accent-cyan: #34d399;       /* Mint Emerald */
+  --accent-sky: #10b981;        /* Bioluminescent Green */
+  --accent-indigo: #14b8a6;     /* Bio Teal */
+  --accent-purple: #059669;
+  --accent-emerald: #10b981;
   
-  --border-subtle: rgba(56, 189, 248, 0.14);
-  --border-active: rgba(56, 189, 248, 0.45);
-  --border-glow: rgba(34, 211, 238, 0.25);
+  --border-subtle: rgba(52, 211, 153, 0.16);
+  --border-active: rgba(52, 211, 153, 0.55);
+  --border-glow: rgba(52, 211, 153, 0.30);
   
-  --glow-cyan: 0 0 25px rgba(34, 211, 238, 0.35);
-  --glow-sky: 0 0 25px rgba(56, 189, 248, 0.35);
-  --glow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --glow-cyan: 0 0 25px rgba(52, 211, 153, 0.45);
+  --glow-sky: 0 0 25px rgba(16, 185, 129, 0.45);
+  --glow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
   
   --font-brand: 'Orbitron', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-code: 'JetBrains Mono', monospace;
+}
+
+[data-theme="cyan"] {
+  --bg-deep: #030712;
+  --bg-radial: radial-gradient(circle at 50% 10%, #0f172a 0%, #080d1a 50%, #030712 100%);
+  --bg-card: rgba(15, 23, 42, 0.70);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-cyan: #22d3ee;
+  --accent-sky: #38bdf8;
+  --accent-indigo: #818cf8;
+  --accent-purple: #c084fc;
+  --border-subtle: rgba(56, 189, 248, 0.14);
+  --border-active: rgba(56, 189, 248, 0.45);
+  --border-glow: rgba(34, 211, 238, 0.25);
+  --glow-cyan: 0 0 25px rgba(34, 211, 238, 0.35);
+  --glow-sky: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+[data-theme="violet"] {
+  --bg-deep: #070312;
+  --bg-radial: radial-gradient(circle at 50% 10%, #2e1065 0%, #15082e 50%, #070312 100%);
+  --bg-card: rgba(26, 14, 48, 0.72);
+  --bg-card-hover: rgba(42, 22, 78, 0.88);
+  --text-primary: #faf5ff;
+  --text-secondary: #d8b4fe;
+  --text-muted: #a855f7;
+  --accent-cyan: #f59e0b;       /* Neural Amber */
+  --accent-sky: #c084fc;        /* Electric Violet */
+  --accent-indigo: #a855f7;     /* Ultraviolet */
+  --accent-purple: #e879f9;
+  --border-subtle: rgba(192, 132, 252, 0.20);
+  --border-active: rgba(192, 132, 252, 0.55);
+  --border-glow: rgba(245, 158, 11, 0.30);
+  --glow-cyan: 0 0 25px rgba(245, 158, 11, 0.45);
+  --glow-sky: 0 0 25px rgba(192, 132, 252, 0.45);
+}
+
+[data-theme="indigo"] {
+  --bg-deep: #05050a;
+  --bg-radial: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #0c0a1f 50%, #05050a 100%);
+  --bg-card: rgba(20, 20, 38, 0.72);
+  --bg-card-hover: rgba(34, 34, 62, 0.88);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #818cf8;
+  --accent-cyan: #a5b4fc;       /* Soft Lavender */
+  --accent-sky: #818cf8;        /* Vivid Indigo */
+  --accent-indigo: #6366f1;     /* Royal Indigo */
+  --accent-purple: #c084fc;
+  --border-subtle: rgba(129, 140, 248, 0.18);
+  --border-active: rgba(129, 140, 248, 0.50);
+  --border-glow: rgba(165, 180, 252, 0.25);
+  --glow-cyan: 0 0 25px rgba(165, 180, 252, 0.40);
+  --glow-sky: 0 0 25px rgba(129, 140, 248, 0.45);
+}
+
+[data-theme="crimson"] {
+  --bg-deep: #0a0305;
+  --bg-radial: radial-gradient(circle at 50% 10%, #4c0519 0%, #20040c 50%, #0a0305 100%);
+  --bg-card: rgba(36, 12, 18, 0.72);
+  --bg-card-hover: rgba(56, 18, 28, 0.88);
+  --text-primary: #fff1f2;
+  --text-secondary: #fecdd3;
+  --text-muted: #fb7185;
+  --accent-cyan: #fb7185;       /* Plasma Rose */
+  --accent-sky: #f43f5e;        /* Electric Crimson */
+  --accent-indigo: #e11d48;     /* Ruby */
+  --accent-purple: #fda4af;
+  --border-subtle: rgba(244, 63, 94, 0.20);
+  --border-active: rgba(244, 63, 94, 0.55);
+  --border-glow: rgba(251, 113, 133, 0.30);
+  --glow-cyan: 0 0 25px rgba(251, 113, 133, 0.45);
+  --glow-sky: 0 0 25px rgba(244, 63, 94, 0.50);
 }
 
 /* Base Reset & Smoothness */
@@ -42,11 +119,12 @@
 body {
   font-family: var(--font-body);
   background-color: var(--bg-deep);
-  background: radial-gradient(circle at 50% 10%, #0f172a 0%, #080d1a 50%, #030712 100%);
+  background: var(--bg-radial);
   color: var(--text-primary);
   overflow-x: hidden;
   line-height: 1.6;
   min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* UPDATE: Fixed Neural Background Canvas */
@@ -132,22 +210,31 @@ nav .logo {
   text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-select-wrapper select,
 .lang-select-wrapper select {
-  background-color: rgba(15, 23, 42, 0.9);
+  background-color: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
   font-family: var(--font-code);
   font-size: 0.82rem;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
 }
 
+.theme-select-wrapper select:hover,
 .lang-select-wrapper select:hover {
-  border-color: var(--accent-sky);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
 }
 
 /* ==========================================================================

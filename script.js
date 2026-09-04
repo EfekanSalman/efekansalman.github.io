@@ -1,6 +1,6 @@
 /**
- * @fileoverview Portfolio Core Script: Multilingual Support, Live LIF Neuron Oscilloscope,
- * GitHub Telemetry integration, and Interactive Animation Observers.
+ * @fileoverview Portfolio Core Script: Dynamic Color Theme Engine, Multilingual Support,
+ * Live LIF Neuron Oscilloscope, GitHub Telemetry integration, and Interactive Observers.
  */
 
 // ─── TRANSLATIONS ───────────────────────────────────────────────────────────
@@ -124,6 +124,77 @@ const translations = {
   }
 };
 
+// ─── THEME PALETTES & SWITCHER ───────────────────────────────────────────────
+const themePalettes = {
+  emerald: {
+    neuronColor: "rgba(52, 211, 153, ",
+    spikeColor: "rgba(16, 185, 129, ",
+    synapseColor: "rgba(52, 211, 153, ",
+    oscColor: "#10b981",
+  },
+  cyan: {
+    neuronColor: "rgba(56, 189, 248, ",
+    spikeColor: "rgba(34, 211, 238, ",
+    synapseColor: "rgba(125, 211, 252, ",
+    oscColor: "#22d3ee",
+  },
+  violet: {
+    neuronColor: "rgba(192, 132, 252, ",
+    spikeColor: "rgba(245, 158, 11, ",
+    synapseColor: "rgba(168, 85, 247, ",
+    oscColor: "#c084fc",
+  },
+  indigo: {
+    neuronColor: "rgba(129, 140, 248, ",
+    spikeColor: "rgba(165, 180, 252, ",
+    synapseColor: "rgba(99, 102, 241, ",
+    oscColor: "#818cf8",
+  },
+  crimson: {
+    neuronColor: "rgba(244, 63, 94, ",
+    spikeColor: "rgba(251, 113, 133, ",
+    synapseColor: "rgba(225, 29, 72, ",
+    oscColor: "#f43f5e",
+  },
+};
+
+let activeSynapticCanvas = null;
+let activeOscilloscope = null;
+
+/**
+ * Applies a theme across CSS root, Canvas background, and Oscilloscope.
+ * 
+ * @param {string} theme - Theme identifier ('emerald', 'cyan', 'violet', 'indigo', 'crimson').
+ * @returns {void}
+ */
+function applyTheme(theme) {
+  if (!themePalettes[theme]) theme = "emerald";
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("neuro_theme", theme);
+
+  const palette = themePalettes[theme];
+  if (activeSynapticCanvas) {
+    activeSynapticCanvas.updateColors({
+      neuronColor: palette.neuronColor,
+      spikeColor: palette.spikeColor,
+      synapseColor: palette.synapseColor,
+    });
+  }
+
+  if (activeOscilloscope) {
+    activeOscilloscope.setWaveformColor(palette.oscColor);
+  }
+
+  const select = document.getElementById("themeSelect");
+  if (select && select.value !== theme) {
+    select.value = theme;
+  }
+}
+
+document.getElementById("themeSelect")?.addEventListener("change", (e) => {
+  applyTheme(e.target.value);
+});
+
 // ─── TYPING ANIMATION ────────────────────────────────────────────────────────
 const typingPhrases = {
   en: [
@@ -221,14 +292,15 @@ class NeuronOscilloscope {
     this.ctx = this.canvas.getContext("2d");
 
     // Biophysical LIF parameters (scaled to physiological units)
-    this.vRest = -70.0;    // Resting potential (mV)
-    this.vReset = -75.0;   // Reset potential after spike (mV)
+    this.vRest = -70.0;      // Resting potential (mV)
+    this.vReset = -75.0;     // Reset potential after spike (mV)
     this.vThreshold = -50.0; // Firing threshold (mV)
-    this.vPeak = 30.0;     // Peak spike amplitude (mV)
+    this.vPeak = 30.0;       // Peak spike amplitude (mV)
     this.voltage = this.vRest;
-    this.tau = 20.0;       // Membrane time constant (ms)
-    this.refractory = 0;   // Refractory counter (steps)
+    this.tau = 20.0;         // Membrane time constant (ms)
+    this.refractory = 0;     // Refractory counter (steps)
     this.injectedCurrent = 0.0;
+    this.waveformColor = "#10b981";
 
     this.history = new Array(80).fill(this.vRest);
 
@@ -238,6 +310,15 @@ class NeuronOscilloscope {
 
     this.bindEvents();
     this.start();
+  }
+
+  /**
+   * Updates waveform rendering color.
+   * 
+   * @param {string} color - Hex/RGB color string.
+   */
+  setWaveformColor(color) {
+    this.waveformColor = color;
   }
 
   /**
@@ -258,7 +339,7 @@ class NeuronOscilloscope {
    * @returns {void}
    */
   step() {
-    // Add baseline Poisson micro-noise
+    // Baseline Poisson micro-noise
     const noise = (Math.random() - 0.48) * 0.8;
 
     if (this.refractory > 0) {
@@ -309,7 +390,7 @@ class NeuronOscilloscope {
     this.ctx.clearRect(0, 0, w, h);
 
     // Draw grid lines
-    this.ctx.strokeStyle = "rgba(56, 189, 248, 0.08)";
+    this.ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
     this.ctx.lineWidth = 1;
     for (let y = 20; y < h; y += 25) {
       this.ctx.beginPath();
@@ -330,9 +411,9 @@ class NeuronOscilloscope {
 
     // Draw Membrane Voltage Waveform
     this.ctx.beginPath();
-    this.ctx.strokeStyle = "#22d3ee";
+    this.ctx.strokeStyle = this.waveformColor;
     this.ctx.lineWidth = 2.2;
-    this.ctx.shadowColor = "#22d3ee";
+    this.ctx.shadowColor = this.waveformColor;
     this.ctx.shadowBlur = 8;
 
     const stepX = w / (this.history.length - 1);
@@ -466,13 +547,23 @@ function animateSkillBars() {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  // UPDATE: Initialize interactive synaptic neural network canvas
+  const initialTheme = localStorage.getItem("neuro_theme") || "emerald";
+
+  // UPDATE: Initialize interactive synaptic canvas with initial theme palette
   if (window.SynapticCanvas) {
-    new SynapticCanvas("synapse-canvas");
+    const palette = themePalettes[initialTheme] || themePalettes.emerald;
+    activeSynapticCanvas = new SynapticCanvas("synapse-canvas", {
+      neuronColor: palette.neuronColor,
+      spikeColor: palette.spikeColor,
+      synapseColor: palette.synapseColor,
+    });
   }
 
   // UPDATE: Initialize real-time LIF Neuron Oscilloscope widget
-  new NeuronOscilloscope("osc-canvas");
+  activeOscilloscope = new NeuronOscilloscope("osc-canvas");
+
+  // Apply saved or default theme
+  applyTheme(initialTheme);
 
   typeText();
   loadGithubStats();

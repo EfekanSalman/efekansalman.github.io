@@ -399,6 +399,18 @@ class SynapticCanvas {
   }
 
   /**
+   * Updates rendering colors dynamically when theme changes.
+   * 
+   * @param {Object} colors - New color palette settings.
+   * @returns {void}
+   */
+  updateColors(colors = {}) {
+    if (colors.neuronColor) this.config.neuronColor = colors.neuronColor;
+    if (colors.spikeColor) this.config.spikeColor = colors.spikeColor;
+    if (colors.synapseColor) this.config.synapseColor = colors.synapseColor;
+  }
+
+  /**
    * Stops the simulation animation loop.
    * 
    * @returns {void}
