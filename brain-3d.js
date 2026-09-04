@@ -345,6 +345,28 @@ class HolographicBrain3D {
       this.mouseY = e.touches[0].clientY;
     }, { passive: true });
 
+    // Observe viewport visibility to pause rendering when offscreen (GPU saver)
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          this.isIntersecting = entry.isIntersecting;
+          if (this.isIntersecting && !this.animId) {
+            this.start();
+          } else if (!this.isIntersecting && this.animId) {
+            this.stop();
+          }
+        });
+      }, { threshold: 0.05 });
+
+      this.observer.observe(this.container);
+    }
+
+    // Check reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      this.options.autoRotateSpeed = 0;
+    }
+
     // Handle container resize
     window.addEventListener('resize', () => {
       if (!this.container) return;
@@ -364,6 +386,11 @@ class HolographicBrain3D {
    * @returns {void}
    */
   render() {
+    if (!this.isIntersecting) {
+      this.animId = null;
+      return;
+    }
+
     // Smooth rotation interpolation
     if (!this.isMouseDown) {
       this.targetRotY += this.options.autoRotateSpeed;
@@ -394,7 +421,7 @@ class HolographicBrain3D {
    * @returns {void}
    */
   start() {
-    if (!this.animId) {
+    if (!this.animId && this.isIntersecting) {
       this.render();
     }
   }
