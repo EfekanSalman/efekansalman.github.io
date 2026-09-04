@@ -95,7 +95,7 @@
         <span class="badge-pulse"></span>
         <span data-i18n="hero_badge">Computational Neuroscience & Bio-Inspired AI</span>
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-i18n="hero_title">
         <span class="title-gradient">Decoding Neural Dynamics</span> & Artificial Minds
       </h1>
       <p class="typing-wrapper">
@@ -103,13 +103,13 @@
       </p>
       
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary" data-i18n="hero_btn_projects">
-          <span>Explore Projects</span>
+        <a href="#projects" class="btn btn-primary">
+          <span data-i18n="hero_btn_projects">Explore Projects</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
-        <a href="assets/EfekanSalman_CV.pdf" target="_blank" class="btn btn-secondary" data-i18n="download_cv">
+        <a href="assets/EfekanSalman_CV.pdf" target="_blank" class="btn btn-secondary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>Download CV</span>
+          <span data-i18n="download_cv">Download CV</span>
         </a>
       </div>
     </div>
@@ -120,7 +120,7 @@
         <div class="neuron-card-header">
           <div class="card-status-dot"></div>
           <span class="card-status-title" data-i18n="brain_3d_title">3D Holographic Connectome</span>
-          <span class="badge-tag">360° Interactive</span>
+          <span class="badge-tag" data-i18n="badge_360">360° Interactive</span>
         </div>
 
         <!-- 3D Three.js Brain Container -->
@@ -129,11 +129,11 @@
           <div class="brain-overlay-hints">
             <span class="hint-tag">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-              Drag to Rotate
+              <span data-i18n="hint_drag">Drag to Rotate</span>
             </span>
             <span class="hint-tag">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              Spiking Tracts
+              <span data-i18n="hint_spikes">Spiking Tracts</span>
             </span>
           </div>
         </div>
@@ -144,17 +144,17 @@
         
         <div class="neuron-telemetry">
           <div class="telemetry-item">
-            <span class="telemetry-label">Membrane V:</span>
+            <span class="telemetry-label" data-i18n="telemetry_membrane">Membrane V:</span>
             <span id="osc-voltage" class="telemetry-val">-70.0 mV</span>
           </div>
           <div class="telemetry-item">
-            <span class="telemetry-label">Spike State:</span>
-            <span id="osc-state" class="telemetry-val state-resting">Resting</span>
+            <span class="telemetry-label" data-i18n="telemetry_spike_state">Spike State:</span>
+            <span id="osc-state" class="telemetry-val state-resting" data-i18n="state_resting">Resting</span>
           </div>
         </div>
-        <button id="stimulate-btn" class="btn-stimulate" data-i18n="stimulate_btn">
+        <button id="stimulate-btn" class="btn-stimulate">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          <span>Inject Synaptic Current</span>
+          <span data-i18n="stimulate_btn">Inject Synaptic Current</span>
         </button>
       </div>
     </div>
@@ -203,8 +203,8 @@
         <div class="bento-card bento-card-large">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-accent">Featured Research</span>
-              <span class="badge-tag">LLM ✕ Neuroscience</span>
+              <span class="badge-accent" data-i18n="badge_featured_research">Featured Research</span>
+              <span class="badge-tag" data-i18n="badge_llm_neuro">LLM ✕ Neuroscience</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/AxonLM" target="_blank" title="View Source">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -224,7 +224,7 @@
               <span>FFN Probing</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/AxonLM" target="_blank">
-              <span>View on GitHub</span>
+              <span data-i18n="view_github">View on GitHub</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -234,8 +234,8 @@
         <div class="bento-card bento-card-large">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-accent">Cognitive Architecture</span>
-              <span class="badge-tag">Artificial Consciousness</span>
+              <span class="badge-accent" data-i18n="badge_cognitive_arch">Cognitive Architecture</span>
+              <span class="badge-tag" data-i18n="badge_artificial_consciousness">Artificial Consciousness</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank" title="View Source">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -255,7 +255,7 @@
               <span>Agent Simulation</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/NeuroConscious" target="_blank">
-              <span>View on GitHub</span>
+              <span data-i18n="view_github">View on GitHub</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -265,8 +265,8 @@
         <div class="bento-card">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-accent">Neuromorphic</span>
-              <span class="badge-tag">Biophysics & C</span>
+              <span class="badge-accent" data-i18n="badge_neuromorphic">Neuromorphic</span>
+              <span class="badge-tag" data-i18n="badge_biophysics">Biophysics & C</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/neuromorphic-stdp-snn" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -286,7 +286,7 @@
               <span>Streamlit</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/neuromorphic-stdp-snn" target="_blank">
-              <span>View</span>
+              <span data-i18n="view_project">View</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -296,7 +296,7 @@
         <div class="bento-card">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-tag">Multi-Agent ABM</span>
+              <span class="badge-tag" data-i18n="badge_abm">Multi-Agent ABM</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/ShipOfFools" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -315,7 +315,7 @@
               <span>Social Dynamics</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/ShipOfFools" target="_blank">
-              <span>View</span>
+              <span data-i18n="view_project">View</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -325,7 +325,7 @@
         <div class="bento-card">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-tag">Neural Decoding</span>
+              <span class="badge-tag" data-i18n="badge_neural_decoding">Neural Decoding</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/BrainDecode" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -344,7 +344,7 @@
               <span>SciPy</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/BrainDecode" target="_blank">
-              <span>View</span>
+              <span data-i18n="view_project">View</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -354,7 +354,7 @@
         <div class="bento-card">
           <div class="bento-card-top">
             <div class="bento-badges">
-              <span class="badge-tag">Production MLOps</span>
+              <span class="badge-tag" data-i18n="badge_mlops">Production MLOps</span>
             </div>
             <a class="card-icon-link" href="https://github.com/EfekanSalman/Drug_Consumption_Prediction" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -374,7 +374,7 @@
               <span>MLOps</span>
             </div>
             <a class="gh-link-pill" href="https://github.com/EfekanSalman/Drug_Consumption_Prediction" target="_blank">
-              <span>View</span>
+              <span data-i18n="view_project">View</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -395,9 +395,9 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
           </div>
           <div class="research-info">
-            <div class="research-label">Zenodo Open Science</div>
+            <div class="research-label" data-i18n="research_zenodo_label">Zenodo Open Science</div>
             <div class="research-id">Record #20027966</div>
-            <p class="research-sub">Preprints, datasets, and citable open scientific assets.</p>
+            <p class="research-sub" data-i18n="research_zenodo_sub">Preprints, datasets, and citable open scientific assets.</p>
           </div>
           <span class="ext-arrow">↗</span>
         </a>
@@ -407,9 +407,9 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9 8v8"></path><path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path><path d="M12 12v4"></path></svg>
           </div>
           <div class="research-info">
-            <div class="research-label">ORCID Registry</div>
+            <div class="research-label" data-i18n="research_orcid_label">ORCID Registry</div>
             <div class="research-id">0009-0008-2743-8658</div>
-            <p class="research-sub">Verified scientific researcher identity & contributions.</p>
+            <p class="research-sub" data-i18n="research_orcid_sub">Verified scientific researcher identity & contributions.</p>
           </div>
           <span class="ext-arrow">↗</span>
         </a>
@@ -419,9 +419,9 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
           </div>
           <div class="research-info">
-            <div class="research-label">Hugging Face</div>
+            <div class="research-label" data-i18n="research_hf_label">Hugging Face</div>
             <div class="research-id">@Efekan35</div>
-            <p class="research-sub">Bio-inspired model weights, datasets, and neural spaces.</p>
+            <p class="research-sub" data-i18n="research_hf_sub">Bio-inspired model weights, datasets, and neural spaces.</p>
           </div>
           <span class="ext-arrow">↗</span>
         </a>
@@ -431,9 +431,9 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
           </div>
           <div class="research-info">
-            <div class="research-label">Medium Research Blog</div>
+            <div class="research-label" data-i18n="research_medium_label">Medium Research Blog</div>
             <div class="research-id">@efekansalman</div>
-            <p class="research-sub">Essays on computational neuroscience and artificial minds.</p>
+            <p class="research-sub" data-i18n="research_medium_sub">Essays on computational neuroscience and artificial minds.</p>
           </div>
           <span class="ext-arrow">↗</span>
         </a>
@@ -449,7 +449,7 @@
       <div id="github-stats-container">
         <div class="gh-loading">
           <div class="gh-spinner"></div>
-          <p>Streaming GitHub repository telemetry...</p>
+          <p data-i18n="gh_loading">Streaming GitHub repository telemetry...</p>
         </div>
       </div>
     </section>
@@ -463,9 +463,9 @@
 
       <div class="skills-container">
         <div class="skill-group">
-          <h3 class="skill-group-title" data-i18n="skills_group_neuro">
+          <h3 class="skill-group-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-            Neuroscience & AI
+            <span data-i18n="skills_group_neuro">Neuroscience & AI</span>
           </h3>
           <div class="skill-bars">
             <div class="skill-item">
@@ -492,9 +492,9 @@
         </div>
 
         <div class="skill-group">
-          <h3 class="skill-group-title" data-i18n="skills_group_systems">
+          <h3 class="skill-group-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
-            Systems & Engineering
+            <span data-i18n="skills_group_systems">Systems & Engineering</span>
           </h3>
           <div class="skill-bars">
             <div class="skill-item">
@@ -529,40 +529,40 @@
             <svg width="24" height="18" viewBox="0 0 640 480"><g fill-rule="evenodd" stroke-width="1pt"><path fill="#e30a17" d="M0 0h640v480H0z"/><path fill="#fff" d="M407 240a120 120 0 1 1-240 0 120 120 0 0 1 240 0z"/><path fill="#e30a17" d="M413 240a96 96 0 1 1-192 0 96 96 0 0 1 192 0z"/><path fill="#fff" d="m412.3 240-62.7-20.4 38.8 53.3v-65.8l-38.8 53.3z"/></g></svg>
           </div>
           <div class="lang-info">
-            <div class="lang-title">Turkish</div>
-            <div class="lang-level">Native Proficiency</div>
+            <div class="lang-title" data-i18n="lang_tr_title">Turkish</div>
+            <div class="lang-level" data-i18n="lang_tr_level">Native Proficiency</div>
           </div>
-          <span class="lang-pill">Native</span>
+          <span class="lang-pill" data-i18n="lang_tr_pill">Native</span>
         </div>
         <div class="lang-card">
           <div class="lang-flag-svg">
             <svg width="24" height="18" viewBox="0 0 640 480"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 245 180L565 0h75v60L435 240l205 180v60h-75L320 300 75 480H0v-60l205-180L0 60V0h75z"/><path fill="#C8102E" d="m424 288 216 158v34h-46L378 300l46-12zM640 0v10L446 153l45 13L640 46V0zm-424 192L0 34V0h46l216 158-46 34zM0 480v-10l194-143-45-13L0 434v46z"/><path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/><path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/></svg>
           </div>
           <div class="lang-info">
-            <div class="lang-title">English</div>
-            <div class="lang-level">Professional Working (B2)</div>
+            <div class="lang-title" data-i18n="lang_en_title">English</div>
+            <div class="lang-level" data-i18n="lang_en_level">Professional Working (B2)</div>
           </div>
-          <span class="lang-pill">B2</span>
+          <span class="lang-pill" data-i18n="lang_en_pill">B2</span>
         </div>
         <div class="lang-card">
           <div class="lang-flag-svg">
             <svg width="24" height="18" viewBox="0 0 640 480"><g fill-rule="evenodd" stroke-width="1pt"><path fill="#fff" d="M0 0h640v480H0z"/><path fill="#002654" d="M0 0h213.3v480H0z"/><path fill="#ce1126" d="M426.7 0H640v480H426.7z"/></g></svg>
           </div>
           <div class="lang-info">
-            <div class="lang-title">French</div>
-            <div class="lang-level">Elementary (A2)</div>
+            <div class="lang-title" data-i18n="lang_fr_title">French</div>
+            <div class="lang-level" data-i18n="lang_fr_level">Elementary (A2)</div>
           </div>
-          <span class="lang-pill">A2</span>
+          <span class="lang-pill" data-i18n="lang_fr_pill">A2</span>
         </div>
         <div class="lang-card">
           <div class="lang-flag-svg">
             <svg width="24" height="18" viewBox="0 0 640 480"><g fill-rule="evenodd" stroke-width="1pt"><path fill="#ae1c28" d="M0 0h640v160H0z"/><path fill="#fff" d="M0 160h640v160H0z"/><path fill="#21468b" d="M0 320h640v160H0z"/></g></svg>
           </div>
           <div class="lang-info">
-            <div class="lang-title">Dutch</div>
-            <div class="lang-level">Beginner (A1)</div>
+            <div class="lang-title" data-i18n="lang_nl_title">Dutch</div>
+            <div class="lang-level" data-i18n="lang_nl_level">Beginner (A1)</div>
           </div>
-          <span class="lang-pill">A1</span>
+          <span class="lang-pill" data-i18n="lang_nl_pill">A1</span>
         </div>
       </div>
     </section>
@@ -607,7 +607,9 @@
         </a>
       </div>
       <div class="cv-download-wrapper">
-        <a class="btn btn-primary" href="assets/EfekanSalman_CV.pdf" target="_blank" data-i18n="download_cv">Download Curriculum Vitae</a>
+        <a class="btn btn-primary" href="assets/EfekanSalman_CV.pdf" target="_blank">
+          <span data-i18n="download_cv_full">Download Curriculum Vitae</span>
+        </a>
       </div>
     </section>
   </main>
@@ -615,8 +617,8 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-content">
-      <span data-i18n="footer">© 2026 Efekan Salman • Built with bio-inspired neural sparks ⚡</span>
-      <div class="footer-meta">Computational Neuroscience & Spiking Dynamics</div>
+      <span data-i18n="footer">© 2026 Efekan Salman • Built with bio-inspired neural sparks</span>
+      <div class="footer-meta" data-i18n="footer_meta">Computational Neuroscience & Spiking Dynamics</div>
     </div>
   </footer>
 
