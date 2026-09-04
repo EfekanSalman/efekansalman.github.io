@@ -127,20 +127,52 @@ const translations = {
     contact_title: "Connectons-nous",
     contact_subtitle: "Ouvert aux collaborations en neurosciences computationnelles, recherche sur la conscience artificielle et architectures d'IA bio-inspirée.",
     footer: "© 2026 Efekan Salman • Conçu avec des étincelles neuronales bio-inspirées"
+  },
+  nl: {
+    nav_about: "Over mij",
+    nav_projects: "Projecten",
+    nav_research: "Onderzoek",
+    nav_skills: "Vaardigheden",
+    nav_contact: "Contact",
+    hero_badge: "Computationele Neurowetenschappen & Bio-Geïnspireerde AI",
+    hero_btn_projects: "Verken Projecten",
+    download_cv: "Download CV",
+    brain_3d_title: "3D Holografisch Connectoom",
+    neuron_widget_title: "Live LIF Neuron Oscilloscope",
+    stimulate_btn: "Synaptische Stroom Injecteren",
+    about_tag: "01 // Achtergrond",
+    about_title: "Over Mij",
+    about_lead: "Ik ben Efekan, een ontwikkelaar en onderzoeker in de computationele neurowetenschappen, gericht op het simuleren van kunstmatig bewustzijn, neurale besluitvorming en biologisch geïnspireerde systemen via code.",
+    about_sub: "Van backend-systemen ben ik overgestapt naar het modelleren van neurale mechanismen. Ik bouw biofysische spiking neurale netwerken, transformator-brein afstemmingsprobes en cognitieve architecturen die interne motivaties simuleren.",
+    stat_axon_desc: "Neuroanatomische decodeernauwkeurigheid op de Allen Brain Atlas (AxonLM)",
+    stat_snn_desc: "Biofysisch Spiking Neuraal Netwerk & STDP synaptische plasticiteit",
+    projects_tag: "02 // Systemen & Onderzoek",
+    projects_title: "Uitgelichte Projecten",
+    axonlm_desc: "Neuroanatomische connectiviteit is lineair decodeerbaar uit activaties van het Feed-Forward Netwerk (FFN) van transformatoren. Gevalideerd met AUC=0.963 op de Allen Brain Atlas.",
+    neuroconscious_desc: "Een biologisch geïnspireerde, modulaire kunstmatige bewustzijnsmotor die autonome agenten simuleert met interne emotionele toestanden, episodisch/semantisch/procedureel geheugen en DQN-leersystemen.",
+    snn_stdp_desc: "Biologisch plausibele SNN-simulator met LIF-neuronen, STDP ongesuperviseerde synaptische plasticiteit, Winner-Take-All laterale inhibitie en een interactief Streamlit-dashboard.",
+    shipoffools_desc: "Door AI aangedreven sociale agent-gebaseerde modellering (ABM) die menselijke psychologie, machtsdynamieken, vertrouwensnetwerken en dynamische anomaliedetectie onderzoekt.",
+    braindecode_desc: "Het decoderen van hersenconnectiviteit, cognitieve verwarringstoestanden en EEG-tijdreeksen met Brian2 en signaalverwerkingspijplijnen.",
+    drug_desc: "End-to-end productie ML-pijplijn & gecontaineriseerde FastAPI-service (Docker) met strikte pre-commit validatie, Pydantic datacontracten en voorspellende modellen.",
+    research_tag: "03 // Academisch & Open Science",
+    research_title: "Onderzoek & Identificatoren",
+    github_tag: "04 // Code Telemetrie",
+    github_title: "GitHub Telemetrie",
+    skills_tag: "05 // Toolchain & Competenties",
+    skills_title: "Vaardigheden & Technologieën",
+    skills_group_neuro: "Neurowetenschappen & AI",
+    skills_group_systems: "Systemen & Engineering",
+    languages_tag: "06 // Gesproken Talen",
+    languages_title: "Talen",
+    contact_tag: "07 // Transmissie",
+    contact_title: "Laten we Verbinding Maken",
+    contact_subtitle: "Open voor samenwerkingen op het gebied van computationele neurowetenschappen, kunstmatig bewustzijnsonderzoek en bio-geïnspireerde AI-architecturen.",
+    footer: "© 2026 Efekan Salman • Gebouwd met bio-geïnspireerde neurale vonken"
   }
 };
 
 // ─── THEME PALETTES & SWITCHER ───────────────────────────────────────────────
 const themePalettes = {
-  emerald: {
-    neuronColor: "rgba(52, 211, 153, ",
-    spikeColor: "rgba(16, 185, 129, ",
-    synapseColor: "rgba(52, 211, 153, ",
-    oscColor: "#10b981",
-    brainPoint: 0x34d399,
-    brainTract: 0x059669,
-    brainSpark: 0x6ee7b7,
-  },
   cyan: {
     neuronColor: "rgba(56, 189, 248, ",
     spikeColor: "rgba(34, 211, 238, ",
@@ -168,15 +200,6 @@ const themePalettes = {
     brainTract: 0x4f46e5,
     brainSpark: 0xa5b4fc,
   },
-  crimson: {
-    neuronColor: "rgba(244, 63, 94, ",
-    spikeColor: "rgba(251, 113, 133, ",
-    synapseColor: "rgba(225, 29, 72, ",
-    oscColor: "#f43f5e",
-    brainPoint: 0xf43f5e,
-    brainTract: 0xbe123c,
-    brainSpark: 0xfb7185,
-  },
 };
 
 let activeSynapticCanvas = null;
@@ -186,11 +209,11 @@ let activeBrain3D = null;
 /**
  * Applies a theme across CSS root, Canvas background, 3D Brain, and Oscilloscope.
  * 
- * @param {string} theme - Theme identifier ('emerald', 'cyan', 'violet', 'indigo', 'crimson').
+ * @param {string} theme - Theme identifier ('cyan', 'violet', 'indigo').
  * @returns {void}
  */
 function applyTheme(theme) {
-  if (!themePalettes[theme]) theme = "emerald";
+  if (!themePalettes[theme]) theme = "cyan";
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("neuro_theme", theme);
 
@@ -244,6 +267,12 @@ const typingPhrases = {
     "Décodage des activations de transformeurs avec l'Allen Brain Atlas...",
     "Modélisation de neurones LIF biophysiques...",
     "Conception de pulsions internes et d'agentivité synthétique...",
+  ],
+  nl: [
+    "Simuleren van kunstmatige geesten & bewustzijn...",
+    "Decoderen van transformator-activaties met Allen Brain Atlas...",
+    "Modelleren van biofysische Leaky Integrate-and-Fire neuronen...",
+    "Ontwerpen van interne drijfveren & synthetische autonomie...",
   ],
 };
 
@@ -330,7 +359,7 @@ class NeuronOscilloscope {
     this.tau = 20.0;         // Membrane time constant (ms)
     this.refractory = 0;     // Refractory counter (steps)
     this.injectedCurrent = 0.0;
-    this.waveformColor = "#10b981";
+    this.waveformColor = "#22d3ee";
 
     this.history = new Array(80).fill(this.vRest);
 
@@ -589,8 +618,9 @@ function animateSkillBars() {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  const initialTheme = localStorage.getItem("neuro_theme") || "emerald";
-  const palette = themePalettes[initialTheme] || themePalettes.emerald;
+  let initialTheme = localStorage.getItem("neuro_theme");
+  if (!themePalettes[initialTheme]) initialTheme = "cyan";
+  const palette = themePalettes[initialTheme];
 
   // 1. Initialize interactive synaptic background canvas
   if (window.SynapticCanvas) {

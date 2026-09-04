@@ -3,42 +3,12 @@
    Computational Neuroscience & Bio-Inspired AI Design System
    ========================================================================== */
 
-:root, [data-theme="emerald"] {
-  --bg-deep: #010a08;
-  --bg-radial: radial-gradient(circle at 50% 10%, #064e3b 0%, #022c22 45%, #010a08 100%);
-  --bg-card: rgba(4, 28, 20, 0.32);
-  --bg-card-hover: rgba(6, 45, 32, 0.50);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --text-primary: #f0fdf4;
-  --text-secondary: #a7f3d0;
-  --text-muted: #6ee7b7;
-  
-  --accent-cyan: #34d399;       /* Mint Emerald */
-  --accent-sky: #10b981;        /* Bioluminescent Green */
-  --accent-indigo: #14b8a6;     /* Bio Teal */
-  --accent-purple: #059669;
-  --accent-emerald: #10b981;
-  
-  --border-subtle: rgba(52, 211, 153, 0.22);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-active: rgba(52, 211, 153, 0.65);
-  --border-glow: rgba(52, 211, 153, 0.35);
-  
-  --glow-cyan: 0 0 25px rgba(52, 211, 153, 0.45);
-  --glow-sky: 0 0 25px rgba(16, 185, 129, 0.45);
-  --glow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-  
-  --font-brand: 'Orbitron', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-code: 'JetBrains Mono', monospace;
-}
-
-[data-theme="cyan"] {
+:root, [data-theme="cyan"] {
   --bg-deep: #030712;
   --bg-radial: radial-gradient(circle at 50% 10%, #0f172a 0%, #080d1a 50%, #030712 100%);
   --bg-card: rgba(15, 23, 42, 0.32);
   --bg-card-hover: rgba(30, 41, 59, 0.50);
+  --bg-glass: rgba(255, 255, 255, 0.04);
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -46,13 +16,19 @@
   --accent-sky: #38bdf8;
   --accent-indigo: #818cf8;
   --accent-purple: #c084fc;
+  --accent-emerald: #10b981;
   --border-subtle: rgba(56, 189, 248, 0.22);
   --border-glass: rgba(255, 255, 255, 0.12);
   --border-active: rgba(56, 189, 248, 0.65);
   --border-glow: rgba(34, 211, 238, 0.35);
   --glow-cyan: 0 0 25px rgba(34, 211, 238, 0.45);
   --glow-sky: 0 0 25px rgba(56, 189, 248, 0.45);
+  --glow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+  
+  --font-brand: 'Orbitron', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
 }
 
 [data-theme="violet"] {
@@ -97,26 +73,6 @@
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
 }
 
-[data-theme="crimson"] {
-  --bg-deep: #0a0305;
-  --bg-radial: radial-gradient(circle at 50% 10%, #4c0519 0%, #20040c 50%, #0a0305 100%);
-  --bg-card: rgba(36, 12, 18, 0.32);
-  --bg-card-hover: rgba(56, 18, 28, 0.50);
-  --text-primary: #fff1f2;
-  --text-secondary: #fecdd3;
-  --text-muted: #fb7185;
-  --accent-cyan: #fb7185;       /* Plasma Rose */
-  --accent-sky: #f43f5e;        /* Electric Crimson */
-  --accent-indigo: #e11d48;     /* Ruby */
-  --accent-purple: #fda4af;
-  --border-subtle: rgba(244, 63, 94, 0.24);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-active: rgba(244, 63, 94, 0.65);
-  --border-glow: rgba(251, 113, 133, 0.35);
-  --glow-cyan: 0 0 25px rgba(251, 113, 133, 0.45);
-  --glow-sky: 0 0 25px rgba(244, 63, 94, 0.50);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-}
 
 /* Base Reset & Smoothness */
 * {
