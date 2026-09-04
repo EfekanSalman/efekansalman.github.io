@@ -298,13 +298,13 @@ class SynapticCanvas {
 
         if (distSq < maxDistSq) {
           const dist = Math.sqrt(distSq);
-          const alpha = (1 - dist / this.config.maxDistance) * 0.22;
+          const alpha = (1 - dist / this.config.maxDistance) * 0.38;
           
           this.ctx.beginPath();
           this.ctx.moveTo(n1.x, n1.y);
           this.ctx.lineTo(n2.x, n2.y);
           this.ctx.strokeStyle = `${synapseColor}${alpha})`;
-          this.ctx.lineWidth = 0.8 + (1 - dist / this.config.maxDistance) * 0.8;
+          this.ctx.lineWidth = 0.9 + (1 - dist / this.config.maxDistance) * 1.0;
           this.ctx.stroke();
         }
       }
@@ -316,12 +316,12 @@ class SynapticCanvas {
         const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
 
         if (cdist < this.config.cursorRadius) {
-          const calpha = (1 - cdist / this.config.cursorRadius) * 0.45;
+          const calpha = (1 - cdist / this.config.cursorRadius) * 0.55;
           this.ctx.beginPath();
           this.ctx.moveTo(n1.x, n1.y);
           this.ctx.lineTo(this.cursor.x, this.cursor.y);
           this.ctx.strokeStyle = `rgba(34, 211, 238, ${calpha})`;
-          this.ctx.lineWidth = 1.2;
+          this.ctx.lineWidth = 1.4;
           this.ctx.stroke();
         }
       }
@@ -337,10 +337,10 @@ class SynapticCanvas {
       const currentY = ap.startY + (target.y - ap.startY) * ap.progress;
 
       this.ctx.beginPath();
-      this.ctx.arc(currentX, currentY, 2.5, 0, Math.PI * 2);
-      this.ctx.fillStyle = `${spikeColor}0.95)`;
+      this.ctx.arc(currentX, currentY, 3.2, 0, Math.PI * 2);
+      this.ctx.fillStyle = `${spikeColor}1.0)`;
       this.ctx.shadowColor = '#22d3ee';
-      this.ctx.shadowBlur = 10;
+      this.ctx.shadowBlur = 14;
       this.ctx.fill();
       this.ctx.shadowBlur = 0; // Reset shadow
     }
@@ -349,19 +349,19 @@ class SynapticCanvas {
     for (let i = 0; i < this.neurons.length; i++) {
       const n = this.neurons[i];
       const isSpiking = n.refractory > 18;
-      const glowAlpha = Math.min(1.0, Math.max(0.2, n.potential));
+      const glowAlpha = Math.min(1.0, Math.max(0.3, n.potential));
 
       this.ctx.beginPath();
-      this.ctx.arc(n.x, n.y, isSpiking ? n.radius * 1.5 : n.radius, 0, Math.PI * 2);
+      this.ctx.arc(n.x, n.y, isSpiking ? n.radius * 1.6 : n.radius, 0, Math.PI * 2);
 
       if (isSpiking) {
         this.ctx.fillStyle = '#ffffff';
-        this.ctx.shadowColor = '#38bdf8';
-        this.ctx.shadowBlur = 16;
+        this.ctx.shadowColor = '#ffffff';
+        this.ctx.shadowBlur = 20;
       } else {
         this.ctx.fillStyle = `${neuronColor}${glowAlpha})`;
         this.ctx.shadowColor = '#38bdf8';
-        this.ctx.shadowBlur = n.potential * 8;
+        this.ctx.shadowBlur = n.potential * 10;
       }
 
       this.ctx.fill();
