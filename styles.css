@@ -223,16 +223,61 @@ nav .logo {
 }
 
 /* ==========================================================================
-   HERO SECTION & OSCILLOSCOPE WIDGET
+   UPDATE: FULLSCREEN 3D HOLOGRAPHIC CONNECTOME STAGE
    ========================================================================== */
-.hero-section {
-  padding: 170px 48px 90px;
+.brain-3d-fullscreen-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#brain-3d-container {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+#brain-3d-container:active {
+  cursor: grabbing;
+}
+
+#brain-3d-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   HERO SECTION: FULLSCREEN CINEMATIC OPENING
+   ========================================================================== */
+.hero-cinematic {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 140px 24px 80px;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  z-index: 2;
+}
+
+.hero-center-box {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 48px;
+  z-index: 2;
 }
 
 .hero-badge {
@@ -246,7 +291,7 @@ nav .logo {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--accent-sky);
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   backdrop-filter: blur(8px);
 }
 
@@ -258,19 +303,26 @@ nav .logo {
   box-shadow: var(--glow-cyan);
 }
 
-.hero-title {
+.hero-title-giant {
   font-family: var(--font-brand);
-  font-size: 2.85rem;
-  line-height: 1.2;
-  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1.15;
+  font-weight: 900;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
 }
 
 .title-gradient {
   background: linear-gradient(135deg, #ffffff 0%, var(--accent-sky) 50%, var(--accent-cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.title-sub-giant {
+  font-size: clamp(1.6rem, 3.8vw, 3rem);
+  color: var(--text-primary);
+  opacity: 0.95;
 }
 
 .typing-wrapper {
@@ -301,6 +353,7 @@ nav .logo {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn {
@@ -341,20 +394,23 @@ nav .logo {
   transform: translateY(-2px);
 }
 
-/* Hero Oscilloscope Widget */
-.hero-widget {
-  display: flex;
-  justify-content: center;
+/* Floating Live LIF Oscilloscope HUD */
+.hero-floating-hud {
+  position: absolute;
+  right: 36px;
+  bottom: 70px;
+  z-index: 3;
+  width: 320px;
 }
 
 .neuron-card {
   width: 100%;
-  max-width: 420px;
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 22px;
-  padding: 24px;
+  background: rgba(10, 15, 30, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 18px;
   box-shadow: var(--glow-card);
   transition: all 0.35s ease;
   position: relative;
@@ -369,7 +425,7 @@ nav .logo {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .card-status-dot {
@@ -381,125 +437,228 @@ nav .logo {
 }
 
 .card-status-title {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-secondary);
-}
-
-/* 3D Brain Three.js Container */
-.brain-3d-wrapper {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.45) 0%, rgba(3, 7, 18, 0.85) 100%);
-  border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  cursor: grab;
-  touch-action: pan-y;
-}
-
-.brain-3d-wrapper:active {
-  cursor: grabbing;
-}
-
-#brain-3d-container {
-  width: 100%;
-  height: 100%;
-  touch-action: pan-y;
-}
-
-#brain-3d-container canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  touch-action: pan-y;
-}
-
-.brain-overlay-hints {
-  position: absolute;
-  bottom: 8px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.hint-tag {
-  font-family: var(--font-code);
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  background: rgba(3, 7, 18, 0.65);
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .osc-canvas-wrapper {
   background: rgba(3, 7, 18, 0.85);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 #osc-canvas {
   display: block;
   width: 100%;
-  height: 80px;
+  height: 70px;
 }
 
 .neuron-telemetry {
   display: flex;
   justify-content: space-between;
   background: rgba(15, 23, 42, 0.8);
-  padding: 8px 14px;
-  border-radius: 10px;
-  margin-bottom: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   font-family: var(--font-code);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
+}
+
+.telemetry-item {
+  display: flex;
+  gap: 6px;
 }
 
 .telemetry-label {
   color: var(--text-muted);
-  margin-right: 6px;
 }
 
 .telemetry-val {
-  color: var(--accent-cyan);
-  font-weight: 600;
-}
-
-.telemetry-val.state-firing {
-  color: #f43f5e;
-  text-shadow: 0 0 8px #f43f5e;
+  color: var(--accent-sky);
+  font-weight: 700;
 }
 
 .btn-stimulate {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px;
+  border-radius: 8px;
   background: rgba(56, 189, 248, 0.12);
-  border: 1px solid var(--border-active);
+  border: 1px solid var(--border-subtle);
   color: var(--accent-sky);
-  border-radius: 10px;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: all 0.25s ease;
 }
 
 .btn-stimulate:hover {
-  background: rgba(56, 189, 248, 0.25);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-  transform: translateY(-1px);
+  background: var(--accent-sky);
+  color: #030712;
+  box-shadow: var(--glow-sky);
 }
+
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-sky);
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  animation: cue-bounce 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes cue-bounce {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+  50% { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+/* ==========================================================================
+   UPDATE: ROCKSTAR / GTA VI STYLE PINNED SCROLLYTELLING SHOWCASE
+   ========================================================================== */
+.scrolly-showcase {
+  position: relative;
+  width: 100%;
+  min-height: 320vh;
+  z-index: 2;
+}
+
+.scrolly-pin-wrapper {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 clamp(24px, 8vw, 120px);
+}
+
+.scrolly-slide {
+  position: absolute;
+  max-width: 580px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scrolly-slide.active-slide {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scrolly-card-editorial {
+  background: rgba(10, 15, 30, 0.78);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), var(--glass-specular), var(--glow-cyan);
+}
+
+.editorial-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.editorial-act {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.08em;
+}
+
+.editorial-badge {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-sky);
+}
+
+.editorial-title {
+  font-family: var(--font-brand);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.editorial-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  background: rgba(3, 7, 18, 0.65);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+}
+
+.metric-num {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 14px rgba(34, 211, 238, 0.5);
+}
+
+.metric-label {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.editorial-desc {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.editorial-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.editorial-tags span {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--text-muted);
 
 /* ==========================================================================
    BENTO SECTIONS COMMON

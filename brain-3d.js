@@ -21,9 +21,9 @@ class HolographicBrain3D {
     }
 
     this.options = {
-      pointCount: 1600,
-      tractCount: 45,
-      autoRotateSpeed: 0.004,
+      pointCount: 2800,
+      tractCount: 65,
+      autoRotateSpeed: 0.003,
       pointColor: options.pointColor || 0x34d399,
       tractColor: options.tractColor || 0x059669,
       sparkColor: options.sparkColor || 0x6ee7b7,
@@ -48,7 +48,7 @@ class HolographicBrain3D {
     // UPDATE: Properties for NeuroAI Scrollytelling scroll-driven interpolation
     this.scrollProgress = 0;
     this.scrollRotY = 0;
-    this.targetCameraZ = 18;
+    this.targetCameraZ = 20;
     this.targetCameraY = 0;
     this.targetCameraX = 0;
 
@@ -61,13 +61,13 @@ class HolographicBrain3D {
    * @returns {void}
    */
   init() {
-    const width = this.container.clientWidth || 360;
-    const height = this.container.clientHeight || 260;
+    const width = this.container.clientWidth || window.innerWidth;
+    const height = this.container.clientHeight || window.innerHeight;
 
     // 1. Scene & Camera
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    this.camera.position.z = 18;
+    this.camera.position.z = 20;
 
     // 2. WebGL Renderer with Alpha transparency
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
@@ -400,19 +400,19 @@ class HolographicBrain3D {
    *     TypeError: If progress is not a finite number.
    */
   setScrollProgress(progress) {
-    // UPDATE: Implemented camera dolly and connectome orbital scroll scrub
+    // UPDATE: Implemented deep camera dolly and connectome orbital scroll scrub
     if (typeof progress !== 'number' || isNaN(progress)) {
       return;
     }
     this.scrollProgress = Math.max(0, Math.min(1, progress));
     
-    // Smooth camera dolly: 18 -> 11.2 (approaching the core biophysical network)
-    this.targetCameraZ = 18 - (this.scrollProgress * 6.8);
-    this.targetCameraY = -1.2 * Math.sin(this.scrollProgress * Math.PI);
-    this.targetCameraX = 1.8 * Math.sin(this.scrollProgress * Math.PI * 0.7);
+    // Smooth camera dolly: 20 -> 9.2 (deep flythrough into neural core)
+    this.targetCameraZ = 20 - (this.scrollProgress * 10.8);
+    this.targetCameraY = -1.8 * Math.sin(this.scrollProgress * Math.PI);
+    this.targetCameraX = 2.4 * Math.sin(this.scrollProgress * Math.PI * 0.7);
     
     // Orbital rotation scrub
-    this.scrollRotY = this.scrollProgress * Math.PI * 1.6;
+    this.scrollRotY = this.scrollProgress * Math.PI * 2.2;
   }
 
   /**

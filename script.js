@@ -945,20 +945,68 @@ function initNeuroScrollytelling() {
       }
     });
 
-    // 2. 3D Connectome Camera Dolly & Orbital Scrub in Hero
-    if (activeBrain3D) {
-      ScrollTrigger.create({
+    // 2. Hero cinematic fade-out on scroll
+    gsap.to('.hero-center-box', {
+      opacity: 0,
+      y: -70,
+      scale: 0.94,
+      scrollTrigger: {
         trigger: '.hero-section',
         start: 'top top',
         end: 'bottom top',
-        scrub: 1.2,
-        onUpdate: (self) => {
+        scrub: 1,
+      }
+    });
+
+    gsap.to('.hero-floating-hud', {
+      opacity: 0,
+      y: 50,
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: '70% top',
+        scrub: 1,
+      }
+    });
+
+    // 3. Rockstar/GTA VI Style Pinned Scrollytelling Showcase Timeline
+    const slideAxon = document.getElementById('scrolly-slide-axon');
+    const slideConscious = document.getElementById('scrolly-slide-conscious');
+    const slideSnn = document.getElementById('scrolly-slide-snn');
+
+    // Activate first slide initially
+    slideAxon?.classList.add('active-slide');
+
+    ScrollTrigger.create({
+      trigger: '#scrolly-showcase',
+      start: 'top top',
+      end: '+=2800',
+      pin: '.scrolly-pin-wrapper',
+      scrub: 1.2,
+      onUpdate: (self) => {
+        // Drive deep 3D connectome camera dolly and orbital rotation
+        if (activeBrain3D) {
           activeBrain3D.setScrollProgress(self.progress);
         }
-      });
-    }
 
-    // 3. Stacking & 3D Parallax Reveal for Bento Project Cards
+        // Scrub cinematic editorial scenes
+        if (self.progress < 0.35) {
+          slideAxon?.classList.add('active-slide');
+          slideConscious?.classList.remove('active-slide');
+          slideSnn?.classList.remove('active-slide');
+        } else if (self.progress < 0.70) {
+          slideAxon?.classList.remove('active-slide');
+          slideConscious?.classList.add('active-slide');
+          slideSnn?.classList.remove('active-slide');
+        } else {
+          slideAxon?.classList.remove('active-slide');
+          slideConscious?.classList.remove('active-slide');
+          slideSnn?.classList.add('active-slide');
+        }
+      }
+    });
+
+    // 4. Stacking & 3D Parallax Reveal for Bento Project Cards
     const cards = document.querySelectorAll('.bento-card');
     cards.forEach((card) => {
       gsap.fromTo(card, 

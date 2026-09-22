@@ -54,6 +54,11 @@
   <!-- UPDATE: Interactive Synaptic Neural Network Background Canvas -->
   <canvas id="synapse-canvas"></canvas>
 
+  <!-- UPDATE: Fullscreen 3D Holographic Connectome Canvas Background Stage -->
+  <div id="brain-3d-fullscreen-stage" class="brain-3d-fullscreen-stage">
+    <div id="brain-3d-container"></div>
+  </div>
+
   <!-- NAVIGATION -->
   <nav>
     <div class="logo">
@@ -62,7 +67,8 @@
     </div>
     <ul class="nav-links">
       <li><a href="#about" data-i18n="nav_about">About</a></li>
-      <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="#scrolly-showcase" data-i18n="nav_projects">Featured</a></li>
+      <li><a href="#projects">All Systems</a></li>
       <li><a href="#research" data-i18n="nav_research">Research</a></li>
       <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
@@ -88,23 +94,24 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
-  <header class="hero-section">
-    <div class="hero-content">
+  <!-- HERO SECTION: FULLSCREEN CINEMATIC OPENING -->
+  <header class="hero-section hero-cinematic">
+    <div class="hero-center-box">
       <div class="hero-badge">
         <span class="badge-pulse"></span>
         <span data-i18n="hero_badge">Computational Neuroscience & Bio-Inspired AI</span>
       </div>
-      <h1 class="hero-title" data-i18n="hero_title">
-        <span class="title-gradient">Decoding Neural Dynamics</span> & Artificial Minds
+      <h1 class="hero-title hero-title-giant">
+        <span class="title-gradient">Decoding Neural Dynamics</span><br>
+        <span class="title-sub-giant">& Artificial Minds</span>
       </h1>
       <p class="typing-wrapper">
         <span class="typing-prefix">> </span><span id="typing-text"></span><span class="typing-cursor">_</span>
       </p>
       
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">
-          <span data-i18n="hero_btn_projects">Explore Projects</span>
+        <a href="#scrolly-showcase" class="btn btn-primary">
+          <span data-i18n="hero_btn_projects">Explore Research & Systems</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
         <a href="assets/EfekanSalman_CV.pdf" target="_blank" class="btn btn-secondary">
@@ -114,32 +121,17 @@
       </div>
     </div>
 
-    <!-- Interactive Hero Live 3D Brain & LIF Oscilloscope HUD -->
-    <div class="hero-widget">
+    <!-- Floating Live LIF Oscilloscope HUD Widget -->
+    <div class="hero-floating-hud">
       <div class="neuron-card">
         <div class="neuron-card-header">
           <div class="card-status-dot"></div>
-          <span class="card-status-title" data-i18n="brain_3d_title">3D Holographic Connectome</span>
-          <span class="badge-tag" data-i18n="badge_360">360° Interactive</span>
-        </div>
-
-        <!-- 3D Three.js Brain Container -->
-        <div class="brain-3d-wrapper">
-          <div id="brain-3d-container"></div>
-          <div class="brain-overlay-hints">
-            <span class="hint-tag">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-              <span data-i18n="hint_drag">Drag to Rotate</span>
-            </span>
-            <span class="hint-tag">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              <span data-i18n="hint_spikes">Spiking Tracts</span>
-            </span>
-          </div>
+          <span class="card-status-title">Biophysical LIF HUD</span>
+          <span class="badge-tag">Live Spiking</span>
         </div>
 
         <div class="osc-canvas-wrapper">
-          <canvas id="osc-canvas" width="340" height="90"></canvas>
+          <canvas id="osc-canvas" width="280" height="70"></canvas>
         </div>
         
         <div class="neuron-telemetry">
@@ -158,7 +150,113 @@
         </button>
       </div>
     </div>
+
+    <!-- Scroll Indicator Cue -->
+    <div class="hero-scroll-cue">
+      <span class="cue-label">SCROLL TO DESCEND INTO CONNECTOME</span>
+      <div class="cue-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </div>
+    </div>
   </header>
+
+  <!-- UPDATE: ROCKSTAR / GTA VI STYLE PINNED SCROLLYTELLING SHOWCASE -->
+  <section id="scrolly-showcase" class="scrolly-showcase">
+    <div class="scrolly-pin-wrapper">
+      
+      <!-- Slide 1: AxonLM -->
+      <div class="scrolly-slide scrolly-slide-1" id="scrolly-slide-axon">
+        <div class="scrolly-card-editorial">
+          <div class="editorial-header">
+            <span class="editorial-act">ACT 01 // TRANSFORMER-BRAIN ALIGNMENT</span>
+            <span class="editorial-badge">LLM ✕ Neuroscience</span>
+          </div>
+          <h2 class="editorial-title">AxonLM: Decodable Neuroanatomy</h2>
+          <div class="editorial-metric">
+            <span class="metric-num">AUC 0.963</span>
+            <span class="metric-label">Validated on Allen Brain Atlas</span>
+          </div>
+          <p class="editorial-desc">
+            Neuroanatomical connectivity is linearly decodable from transformer Feed-Forward Network (FFN) activations.
+            Revealing biologically aligned cortical structures emerging directly inside deep language models.
+          </p>
+          <div class="editorial-tags">
+            <span>PyTorch</span>
+            <span>Transformers</span>
+            <span>Allen Brain Atlas</span>
+            <span>FFN Probing</span>
+          </div>
+          <div class="editorial-actions">
+            <a href="https://github.com/EfekanSalman/AxonLM" target="_blank" class="btn btn-primary">
+              <span>Inspect AxonLM Architecture</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: NeuroConscious -->
+      <div class="scrolly-slide scrolly-slide-2" id="scrolly-slide-conscious">
+        <div class="scrolly-card-editorial">
+          <div class="editorial-header">
+            <span class="editorial-act">ACT 02 // COGNITIVE ARCHITECTURES</span>
+            <span class="editorial-badge">Artificial Consciousness</span>
+          </div>
+          <h2 class="editorial-title">NeuroConscious: Synthetic Agency</h2>
+          <div class="editorial-metric">
+            <span class="metric-num">GWT + DQN</span>
+            <span class="metric-label">Global Neuronal Workspace Theory</span>
+          </div>
+          <p class="editorial-desc">
+            A biologically inspired, modular artificial consciousness engine. Simulating autonomous agents with internal emotional drives, multi-level memory systems (episodic, semantic, procedural), and reinforcement learning.
+          </p>
+          <div class="editorial-tags">
+            <span>Cognitive Architecture</span>
+            <span>DQN / RL</span>
+            <span>Memory Systems</span>
+            <span>Agent Simulation</span>
+          </div>
+          <div class="editorial-actions">
+            <a href="https://github.com/EfekanSalman/NeuroConscious" target="_blank" class="btn btn-primary">
+              <span>Explore Consciousness Engine</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Neuromorphic STDP-SNN -->
+      <div class="scrolly-slide scrolly-slide-3" id="scrolly-slide-snn">
+        <div class="scrolly-card-editorial">
+          <div class="editorial-header">
+            <span class="editorial-act">ACT 03 // BIOPHYSICAL SUBSTRATES</span>
+            <span class="editorial-badge">Neuromorphic Computing</span>
+          </div>
+          <h2 class="editorial-title">Neuromorphic STDP-SNN: Synaptic Plasticity</h2>
+          <div class="editorial-metric">
+            <span class="metric-num">LIF + STDP</span>
+            <span class="metric-label">Spike-Timing-Dependent Plasticity</span>
+          </div>
+          <p class="editorial-desc">
+            Biologically plausible SNN simulator featuring Leaky Integrate-and-Fire neurons, STDP unsupervised synaptic plasticity, and Winner-Take-All lateral inhibition.
+          </p>
+          <div class="editorial-tags">
+            <span>C / Python</span>
+            <span>STDP Plasticity</span>
+            <span>LIF Neurons</span>
+            <span>Streamlit</span>
+          </div>
+          <div class="editorial-actions">
+            <a href="https://github.com/EfekanSalman/neuromorphic-stdp-snn" target="_blank" class="btn btn-primary">
+              <span>View STDP-SNN Simulator</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- MAIN CONTENT -->
   <main>
