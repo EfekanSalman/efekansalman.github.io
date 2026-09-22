@@ -74,12 +74,31 @@
 }
 
 
-/* Base Reset & Smoothness */
+/* UPDATE: Base Reset & Smooth Scroll with Lenis Integration */
 * {
   box-sizing: border-box;
-  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: auto !important;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
@@ -1204,6 +1223,108 @@ footer {
   }
   .skill-item {
     grid-template-columns: 120px 1fr 40px;
+  }
+}
+
+/* ==========================================================================
+   UPDATE: NEUROAI SCROLLYTELLING TELEMETRY HUD & CINEMATIC EFFECTS
+   ========================================================================== */
+.neuro-scrolly-hud {
+  position: fixed;
+  bottom: 22px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(3, 7, 18, 0.82);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 8px 18px;
+  border-radius: 40px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), var(--glass-specular);
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease;
+}
+
+.hud-stream-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  animation: hud-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes hud-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+.hud-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hud-val {
+  color: var(--accent-sky);
+  font-weight: 700;
+}
+
+.hud-progress-group {
+  gap: 8px;
+}
+
+.hud-bar-track {
+  width: 74px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hud-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+  border-radius: 4px;
+  transition: width 0.08s ease-out;
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+/* Stacking and 3D depth styles for Scrollytelling Cards */
+.bento-card {
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.scrolly-deck-active {
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), var(--glow-cyan);
+  border-color: var(--border-active);
+}
+
+@media (max-width: 768px) {
+  .neuro-scrolly-hud {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    justify-content: space-between;
+    padding: 6px 12px;
+    font-size: 0.64rem;
+  }
+  .hud-bar-track {
+    width: 48px;
   }
 }
 

@@ -622,7 +622,32 @@
     </div>
   </footer>
 
+  <!-- UPDATE: NeuroAI Scrollytelling Telemetry HUD -->
+  <aside id="neuro-scrolly-hud" class="neuro-scrolly-hud" aria-label="Neural Telemetry HUD">
+    <div class="hud-stream-item">
+      <span class="hud-dot"></span>
+      <span class="hud-label">NEURAL SCAN:</span>
+      <span id="hud-status-text" class="hud-val">SYNAPTIC REST</span>
+    </div>
+    <div class="hud-stream-item hud-progress-group">
+      <span class="hud-label">CONNECTOME:</span>
+      <div class="hud-bar-track">
+        <div id="hud-progress-fill" class="hud-bar-fill"></div>
+      </div>
+      <span id="hud-progress-val" class="hud-val">0%</span>
+    </div>
+    <div class="hud-stream-item">
+      <span class="hud-label">FIRING RATE:</span>
+      <span id="hud-firing-rate" class="hud-val">12 Hz</span>
+    </div>
+  </aside>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- UPDATE: GSAP 3.12 & ScrollTrigger for Cinematic NeuroAI Scrollytelling -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- UPDATE: Lenis Smooth Inertia Scroll Engine -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="brain-3d.js"></script>
   <script src="synapse-canvas.js"></script>
   <script src="script.js"></script>

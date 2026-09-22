@@ -45,6 +45,13 @@ class HolographicBrain3D {
     this.targetRotY = 0;
     this.isIntersecting = true;
 
+    // UPDATE: Properties for NeuroAI Scrollytelling scroll-driven interpolation
+    this.scrollProgress = 0;
+    this.scrollRotY = 0;
+    this.targetCameraZ = 18;
+    this.targetCameraY = 0;
+    this.targetCameraX = 0;
+
     this.init();
   }
 
@@ -381,6 +388,34 @@ class HolographicBrain3D {
   }
 
   /**
+   * Updates 3D camera trajectory, focal distance, and rotation based on scroll progress.
+   * 
+   * Args:
+   *     progress: Normalized scroll position in range [0.0, 1.0].
+   * 
+   * Returns:
+   *     void
+   * 
+   * Raises:
+   *     TypeError: If progress is not a finite number.
+   */
+  setScrollProgress(progress) {
+    // UPDATE: Implemented camera dolly and connectome orbital scroll scrub
+    if (typeof progress !== 'number' || isNaN(progress)) {
+      return;
+    }
+    this.scrollProgress = Math.max(0, Math.min(1, progress));
+    
+    // Smooth camera dolly: 18 -> 11.2 (approaching the core biophysical network)
+    this.targetCameraZ = 18 - (this.scrollProgress * 6.8);
+    this.targetCameraY = -1.2 * Math.sin(this.scrollProgress * Math.PI);
+    this.targetCameraX = 1.8 * Math.sin(this.scrollProgress * Math.PI * 0.7);
+    
+    // Orbital rotation scrub
+    this.scrollRotY = this.scrollProgress * Math.PI * 1.6;
+  }
+
+  /**
    * Main Three.js render loop.
    * 
    * @returns {void}
@@ -391,12 +426,21 @@ class HolographicBrain3D {
       return;
     }
 
+    // UPDATE: Smoothly lerp camera coordinates toward scroll targets
+    if (this.camera) {
+      this.camera.position.z += (this.targetCameraZ - this.camera.position.z) * 0.08;
+      this.camera.position.y += (this.targetCameraY - this.camera.position.y) * 0.08;
+      this.camera.position.x += (this.targetCameraX - this.camera.position.x) * 0.08;
+      this.camera.lookAt(0, 0, 0);
+    }
+
     // Smooth rotation interpolation
     if (!this.isMouseDown) {
       this.targetRotY += this.options.autoRotateSpeed;
     }
 
-    this.brainGroup.rotation.y += (this.targetRotY - this.brainGroup.rotation.y) * 0.08;
+    const effectiveTargetY = this.targetRotY + this.scrollRotY;
+    this.brainGroup.rotation.y += (effectiveTargetY - this.brainGroup.rotation.y) * 0.08;
     this.brainGroup.rotation.x += (this.targetRotX - this.brainGroup.rotation.x) * 0.08;
 
     // Update Action Potential Sparks

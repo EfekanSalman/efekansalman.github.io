@@ -823,6 +823,192 @@ function animateSkillBars() {
   bars.forEach((bar) => observer.observe(bar));
 }
 
+// ─── NEUROAI SCROLLYTELLING & LENIS ENGINE ──────────────────────────────────
+let activeLenis = null;
+
+/**
+ * Initializes Lenis smooth inertia scrolling and synchronizes it with GSAP ScrollTrigger.
+ * 
+ * Args:
+ *     None
+ * 
+ * Returns:
+ *     void
+ * 
+ * Raises:
+ *     None: Gracefully catches and logs any initialization errors.
+ */
+function initLenisScroll() {
+  // UPDATE: Initialized cinematic smooth inertia scrolling using Lenis engine
+  try {
+    if (typeof Lenis === 'undefined') {
+      console.warn('[NeuroScrolly] Lenis not available. Falling back to native scrolling.');
+      return;
+    }
+
+    activeLenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.6,
+    });
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Connect Lenis scroll event to GSAP ScrollTrigger updates
+      activeLenis.on('scroll', ScrollTrigger.update);
+
+      // Add Lenis requestAnimationFrame to GSAP ticker for synchronous render loop
+      gsap.ticker.add((time) => {
+        activeLenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      const step = (time) => {
+        activeLenis.raf(time);
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+  } catch (err) {
+    console.error('[NeuroScrolly] Failed to initialize Lenis smooth scroll:', err);
+  }
+}
+
+/**
+ * Configures GSAP ScrollTrigger scrollytelling timelines for 3D connectome and project cards.
+ * 
+ * Args:
+ *     None
+ * 
+ * Returns:
+ *     void
+ * 
+ * Raises:
+ *     None: Gracefully logs exceptions without disrupting page rendering.
+ */
+function initNeuroScrollytelling() {
+  // UPDATE: Configured GSAP ScrollTrigger scrollytelling pipeline & telemetry
+  try {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      console.warn('[NeuroScrolly] GSAP or ScrollTrigger missing.');
+      return;
+    }
+
+    // 1. Live Telemetry HUD Bar updates
+    const hudStatus = document.getElementById('hud-status-text');
+    const hudBar = document.getElementById('hud-progress-fill');
+    const hudVal = document.getElementById('hud-progress-val');
+    const hudFiring = document.getElementById('hud-firing-rate');
+
+    let lastY = window.scrollY;
+    let lastTime = Date.now();
+    let currentHz = 12;
+
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const pct = Math.round(self.progress * 100);
+        if (hudBar) hudBar.style.width = `${pct}%`;
+        if (hudVal) hudVal.textContent = `${pct}%`;
+
+        // Calculate dynamic synaptic firing rate based on scroll velocity
+        const now = Date.now();
+        const dt = Math.max(1, now - lastTime);
+        const dy = Math.abs(window.scrollY - lastY);
+        const speed = (dy / dt) * 100;
+        lastY = window.scrollY;
+        lastTime = now;
+
+        const targetHz = Math.min(150, Math.max(12, Math.round(12 + speed * 0.9)));
+        currentHz += (targetHz - currentHz) * 0.25;
+        if (hudFiring) hudFiring.textContent = `${Math.round(currentHz)} Hz`;
+
+        // Update telemetry status state
+        if (hudStatus) {
+          if (self.progress < 0.18) {
+            hudStatus.textContent = 'SYNAPTIC REST';
+          } else if (self.progress < 0.45) {
+            hudStatus.textContent = 'CONNECTOME SCAN';
+          } else if (self.progress < 0.75) {
+            hudStatus.textContent = 'COGNITIVE PROBE';
+          } else {
+            hudStatus.textContent = 'NEURAL TRANSMISSION';
+          }
+        }
+      }
+    });
+
+    // 2. 3D Connectome Camera Dolly & Orbital Scrub in Hero
+    if (activeBrain3D) {
+      ScrollTrigger.create({
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+        onUpdate: (self) => {
+          activeBrain3D.setScrollProgress(self.progress);
+        }
+      });
+    }
+
+    // 3. Stacking & 3D Parallax Reveal for Bento Project Cards
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach((card) => {
+      gsap.fromTo(card, 
+        { 
+          opacity: 0.7, 
+          y: 45, 
+          scale: 0.95,
+          rotateX: 6 
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotateX: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            end: 'top 52%',
+            scrub: 0.6,
+          }
+        }
+      );
+    });
+
+    // 4. Section Headers Cyber-HUD Reveal
+    const headers = document.querySelectorAll('.section-header');
+    headers.forEach((header) => {
+      gsap.fromTo(header,
+        { opacity: 0, y: 22 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: header,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+  } catch (err) {
+    console.error('[NeuroScrolly] Scrollytelling setup exception:', err);
+  }
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   let initialTheme = localStorage.getItem("neuro_theme");
@@ -850,14 +1036,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. Initialize real-time LIF Neuron Oscilloscope widget
   activeOscilloscope = new NeuronOscilloscope("osc-canvas");
 
-  // Apply saved or default theme
+  // 4. Apply saved or default theme
   applyTheme(initialTheme);
 
-  // Apply saved or default language
+  // 5. Apply saved or default language
   const savedLang = localStorage.getItem("neuro_lang") || "en";
   const langSelect = document.getElementById("langSelect");
   if (langSelect) langSelect.value = savedLang;
   applyTranslations(savedLang);
+
+  // 6. Initialize NeuroAI Scrollytelling and Lenis Smooth Scroll
+  initLenisScroll();
+  initNeuroScrollytelling();
 
   loadGithubStats();
   animateSkillBars();
