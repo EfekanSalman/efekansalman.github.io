@@ -24,6 +24,9 @@ class HolographicBrain3D {
       pointCount: 2800,
       tractCount: 65,
       autoRotateSpeed: 0.003,
+      maxPixelRatio: 2,
+      maxFps: 60,
+      reducedMotion: false,
       pointColor: options.pointColor || 0x34d399,
       tractColor: options.tractColor || 0x059669,
       sparkColor: options.sparkColor || 0x6ee7b7,
@@ -72,7 +75,7 @@ class HolographicBrain3D {
     // 2. WebGL Renderer with Alpha transparency
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     this.renderer.setSize(width, height);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.options.maxPixelRatio));
     this.container.appendChild(this.renderer.domElement);
 
     // 3. Brain Group Container
@@ -369,8 +372,7 @@ class HolographicBrain3D {
     }
 
     // Check reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (this.options.reducedMotion) {
       this.options.autoRotateSpeed = 0;
     }
 
@@ -456,7 +458,20 @@ class HolographicBrain3D {
     }
 
     this.renderer.render(this.scene, this.camera);
-    this.animId = requestAnimationFrame(() => this.render());
+    if (this.options.reducedMotion) {
+      this.animId = null;
+    } else {
+      const frameDelay = 1000 / this.options.maxFps;
+      const tick = (time) => {
+        if (!this.lastFrameTime || time - this.lastFrameTime >= frameDelay) {
+          this.lastFrameTime = time;
+          this.render();
+        } else {
+          this.animId = requestAnimationFrame(tick);
+        }
+      };
+      this.animId = requestAnimationFrame(tick);
+    }
   }
 
   /**
