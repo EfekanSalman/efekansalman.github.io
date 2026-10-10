@@ -21,9 +21,12 @@ class HolographicBrain3D {
     }
 
     this.options = {
-      pointCount: 1600,
-      tractCount: 45,
-      autoRotateSpeed: 0.004,
+      pointCount: 2800,
+      tractCount: 65,
+      autoRotateSpeed: 0.003,
+      maxPixelRatio: 2,
+      maxFps: 60,
+      reducedMotion: false,
       pointColor: options.pointColor || 0x34d399,
       tractColor: options.tractColor || 0x059669,
       sparkColor: options.sparkColor || 0x6ee7b7,
@@ -45,6 +48,13 @@ class HolographicBrain3D {
     this.targetRotY = 0;
     this.isIntersecting = true;
 
+    // UPDATE: Properties for NeuroAI Scrollytelling scroll-driven interpolation
+    this.scrollProgress = 0;
+    this.scrollRotY = 0;
+    this.targetCameraZ = 20;
+    this.targetCameraY = 0;
+    this.targetCameraX = 0;
+
     this.init();
   }
 
@@ -54,18 +64,18 @@ class HolographicBrain3D {
    * @returns {void}
    */
   init() {
-    const width = this.container.clientWidth || 360;
-    const height = this.container.clientHeight || 260;
+    const width = this.container.clientWidth || window.innerWidth;
+    const height = this.container.clientHeight || window.innerHeight;
 
     // 1. Scene & Camera
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    this.camera.position.z = 18;
+    this.camera.position.z = 20;
 
     // 2. WebGL Renderer with Alpha transparency
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     this.renderer.setSize(width, height);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, this.options.maxPixelRatio));
     this.container.appendChild(this.renderer.domElement);
 
     // 3. Brain Group Container
@@ -362,8 +372,7 @@ class HolographicBrain3D {
     }
 
     // Check reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (this.options.reducedMotion) {
       this.options.autoRotateSpeed = 0;
     }
 
@@ -381,6 +390,34 @@ class HolographicBrain3D {
   }
 
   /**
+   * Updates 3D camera trajectory, focal distance, and rotation based on scroll progress.
+   * 
+   * Args:
+   *     progress: Normalized scroll position in range [0.0, 1.0].
+   * 
+   * Returns:
+   *     void
+   * 
+   * Raises:
+   *     TypeError: If progress is not a finite number.
+   */
+  setScrollProgress(progress) {
+    // UPDATE: Implemented deep camera dolly and connectome orbital scroll scrub
+    if (typeof progress !== 'number' || isNaN(progress)) {
+      return;
+    }
+    this.scrollProgress = Math.max(0, Math.min(1, progress));
+    
+    // Smooth camera dolly: 20 -> 9.2 (deep flythrough into neural core)
+    this.targetCameraZ = 20 - (this.scrollProgress * 10.8);
+    this.targetCameraY = -1.8 * Math.sin(this.scrollProgress * Math.PI);
+    this.targetCameraX = 2.4 * Math.sin(this.scrollProgress * Math.PI * 0.7);
+    
+    // Orbital rotation scrub
+    this.scrollRotY = this.scrollProgress * Math.PI * 2.2;
+  }
+
+  /**
    * Main Three.js render loop.
    * 
    * @returns {void}
@@ -391,12 +428,21 @@ class HolographicBrain3D {
       return;
     }
 
+    // UPDATE: Smoothly lerp camera coordinates toward scroll targets
+    if (this.camera) {
+      this.camera.position.z += (this.targetCameraZ - this.camera.position.z) * 0.08;
+      this.camera.position.y += (this.targetCameraY - this.camera.position.y) * 0.08;
+      this.camera.position.x += (this.targetCameraX - this.camera.position.x) * 0.08;
+      this.camera.lookAt(0, 0, 0);
+    }
+
     // Smooth rotation interpolation
     if (!this.isMouseDown) {
       this.targetRotY += this.options.autoRotateSpeed;
     }
 
-    this.brainGroup.rotation.y += (this.targetRotY - this.brainGroup.rotation.y) * 0.08;
+    const effectiveTargetY = this.targetRotY + this.scrollRotY;
+    this.brainGroup.rotation.y += (effectiveTargetY - this.brainGroup.rotation.y) * 0.08;
     this.brainGroup.rotation.x += (this.targetRotX - this.brainGroup.rotation.x) * 0.08;
 
     // Update Action Potential Sparks
@@ -412,7 +458,20 @@ class HolographicBrain3D {
     }
 
     this.renderer.render(this.scene, this.camera);
-    this.animId = requestAnimationFrame(() => this.render());
+    if (this.options.reducedMotion) {
+      this.animId = null;
+    } else {
+      const frameDelay = 1000 / this.options.maxFps;
+      const tick = (time) => {
+        if (!this.lastFrameTime || time - this.lastFrameTime >= frameDelay) {
+          this.lastFrameTime = time;
+          this.render();
+        } else {
+          this.animId = requestAnimationFrame(tick);
+        }
+      };
+      this.animId = requestAnimationFrame(tick);
+    }
   }
 
   /**

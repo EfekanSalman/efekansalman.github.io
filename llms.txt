@@ -1,0 +1,31 @@
+# Efekan Salman
+
+Personal portfolio in computational neuroscience and bio-inspired AI.
+Canonical site: https://efekansalman.github.io/
+
+## Language versions
+
+- English: https://efekansalman.github.io/
+- Türkçe: https://efekansalman.github.io/tr/
+- Français: https://efekansalman.github.io/fr/
+- Nederlands: https://efekansalman.github.io/nl/
+
+## Featured projects
+
+- AxonLM: A modular PyTorch GPT-2 research codebase with transformer feed-forward activation probes. The repository reports AUC 0.963 for neuroanatomical decoding against the Allen Brain Atlas. This number is a repository-reported result, not an independently reproduced measurement. Source: https://github.com/EfekanSalman/AxonLM
+- NeuroConscious: An open-source Python testbed for biologically inspired agent behavior, including internal state, mood, motivation, and environment interaction. Source: https://github.com/EfekanSalman/NeuroConscious
+- Neuromorphic STDP-SNN: A spiking-network simulator using LIF neurons, STDP synaptic plasticity, and winner-take-all inhibition. No benchmark score is published on this site. Source: https://github.com/EfekanSalman/neuromorphic-stdp-snn
+
+## Interactive learning
+
+- LIF and STDP teaching lab: https://efekansalman.github.io/#stdp-lab — visitors can vary input current, firing threshold, and spike timing. Its numerical values are illustrative simulations, not measured results from the STDP-SNN project.
+
+## Identity and research
+
+- GitHub: https://github.com/EfekanSalman
+- ORCID: https://orcid.org/0009-0008-2743-8658
+- Zenodo: https://zenodo.org/records/20027966
+- Hugging Face: https://huggingface.co/Efekan35
+- LinkedIn: https://www.linkedin.com/in/efekan-salman/
+
+The website and linked project repositories are the sources of truth for current project details.
